@@ -442,9 +442,11 @@ body a:hover{
 		nav.user-menu{height:70px;border:0;background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
 		.dashboard-page nav.user-menu{top:5px;position:absolute}
 		.dashboard-page nav.user-menu .user-menu-wrapper{margin-right:20px}
+    .dashboard-page nav.user-menu .user-menu-wrapper2{margin-right:0px}
 		.dashboard-page nav.user-menu .panel{right:20px}
 		nav.user-menu .main-menu-access{display:none}
 		nav.user-menu .user-menu-wrapper{margin-right:-10px}
+    nav.user-menu .user-menu-wrapper2{margin-right:0px}
 		nav.user-menu>section>a{margin:10px 0;padding:0}
 		nav.user-menu>section>a i{border:0;height:50px;width:40px}
 		nav.user-menu .menu-counter{top:-10px;left:5px;width:30px;height:23px}
@@ -3925,6 +3927,9 @@ div#vmap {
 	div#graph-wrapper {
 		overflow-x: scroll;
 	}
+  div#graph-wrapper2 {
+		overflow-x: scroll;
+	}
 	div#graph3 {
 		overflow-x: scroll;
 	}
@@ -3984,6 +3989,9 @@ div#vmap {
 		width: 130% !important;
 	}
 	div#graph2-wrapper {
+		overflow-x: scroll;
+	}
+  div#graph2-wrapper2 {
 		overflow-x: scroll;
 	}
 }
@@ -4497,6 +4505,9 @@ div#vmap {
 		left: -190%;
 	}
 	.wrapper {
+		padding: 0 0px;
+	}
+  .wrapper2 {
 		padding: 0 0px;
 	}
 	nav.user-menu {
