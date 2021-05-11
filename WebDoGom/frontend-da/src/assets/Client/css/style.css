@@ -1009,6 +1009,15 @@ h3.tittle-w3l {
     position: relative;
     padding-bottom: 20px;
 }
+h3.tittle-w3lsp {
+    color: #000;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: auto;
+    margin-top: 25%;
+    position: relative;
+    padding-bottom: 20px;
+}
 span.heading-style {
     position: absolute;
     width: 100%;
@@ -1433,7 +1442,7 @@ p.footer-main span {
 /*-- //bottom-to-top --*/
 /* contact page */
 .page-head_agile_info_w3l {
-    background: url(../images/banner2.jpg) no-repeat;
+    background: url(../images/nghe-nhan-bat-trang-1.jpg) no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;

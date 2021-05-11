@@ -1,0 +1,267 @@
+<style>
+    .img-format {
+        height: 170px;
+        width: 150px;
+    }
+
+    .a1 {
+        text-decoration: none;
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    ;
+
+    .vertical-menu {
+        width: 200px;
+        /* Set a width if you like */
+    }
+
+    .vertical-menu a {
+        background-color: #eee;
+        /* Grey background color */
+        color: black;
+        /* Black text color */
+        display: block;
+        /* Make the links appear below each other */
+        padding: 12px;
+        /* Add some padding */
+        text-decoration: none;
+        /* Remove underline from links */
+    }
+
+    .vertical-menu a:hover {
+        background-color: #ccc;
+        /* Dark grey background on mouse-over */
+    }
+
+    .vertical-menu a.active {
+        background-color: blue;
+        /* Add a green color to the "active/current" link */
+        color: white;
+    }
+</style>
+
+<!-- top-header -->
+<section style="margin-left: -4.4%;" class="wrapper scrollable">
+    <app-header></app-header>
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l">
+
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="index.html">Trang chủ</a>
+                        <i>|</i>
+                    </li>
+                    <li>Thanh toán</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //page -->
+    <div class="welcome">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="vertical-menu">
+                        <a href="#" class="active">Hình thức thanh toán</a>
+                        <a href="#">- Qua ví điện tử Viettel Pay</a>
+                        <a href="#">- Qua thẻ ATM</a>
+                        <a href="#">- Qua thẻ ghi nợ</a>
+                        <a href="#">- Qua paypal</a>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <h2>Thanh toán qua thẻ ghi nợ</h2>
+                            <p>Sử dụng ví điện tử Viettel Pay để thanh toán</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                </div>
+                                <button type="submit" class="btn btn-success" style="width: 20%; height: 45px;">Thanh toán</button>
+                            </form>
+                        </div>
+                    </div><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-newsletter></app-newsletter>
+    <!-- //newsletter -->
+    <!-- footer -->
+    <app-footer></app-footer>
+</section>
+<!-- //copyright -->
+
+<!-- js-files -->
+<!-- jquery -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- //jquery -->
+
+<!-- popup modal (for signin & signup)-->
+<script src="js/jquery.magnific-popup.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+    });
+</script>
+<!-- Large modal -->
+<!-- <script>
+		$('#').modal('show');
+	</script> -->
+<!-- //popup modal (for signin & signup)-->
+
+<!-- cart-js -->
+<script src="../assets/Client/js/minicart.js"></script>
+<script>
+    paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
+
+    paypalm.minicartk.cart.on('checkout', function (evt) {
+        var items = this.items(),
+            len = items.length,
+            total = 0,
+            i;
+
+        // Count the number of each item in the cart
+        for (i = 0; i < len; i++) {
+            total += items[i].get('quantity');
+        }
+
+        if (total < 3) {
+            alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            evt.preventDefault();
+        }
+    });
+</script>
+<!-- //cart-js -->
+
+<!--quantity-->
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<script>
+    $(document).ready(function (c) {
+        $('.close1').on('click', function (c) {
+            $('.rem1').fadeOut('slow', function (c) {
+                $('.rem1').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close2').on('click', function (c) {
+            $('.rem2').fadeOut('slow', function (c) {
+                $('.rem2').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close3').on('click', function (c) {
+            $('.rem3').fadeOut('slow', function (c) {
+                $('.rem3').remove();
+            });
+        });
+    });
+</script>
+<!--//quantity-->
+
+<!-- password-script -->
+<script>
+    window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+    }
+
+    function validatePassword() {
+        var pass2 = document.getElementById("password2").value;
+        var pass1 = document.getElementById("password1").value;
+        if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("password2").setCustomValidity('');
+        //empty string means no validation error
+    }
+</script>
+<!-- //password-script -->
+
+<!-- smoothscroll -->
+<!-- //smoothscroll -->
+
+<!-- start-smooth-scrolling -->
+<script src="../assets/Client/js/move-top.js"></script>
+<script src="../assets/Client/js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- //end-smooth-scrolling -->
+
+<!-- smooth-scrolling-of-move-up -->
+<script>
+    $(document).ready(function () {
+        /*
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear' 
+        };
+        */
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!-- //smooth-scrolling-of-move-up -->
+
+<!-- for bootstrap working -->
+<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- //js-files -->

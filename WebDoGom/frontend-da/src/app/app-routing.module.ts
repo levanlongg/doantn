@@ -5,16 +5,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     loadChildren: () => import('./Client/client.module').then((m) => m.ClientModule),
   },
   {
     path: '',
     loadChildren: () => import('./Admin/admin.module').then((m) => m.AdminModule),
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
   },
   { path: '**', component: NotFoundComponent}
 ];

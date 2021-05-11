@@ -14,6 +14,14 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { KnowledgeCeramicsComponent } from './knowledge-ceramics/knowledge-ceramics.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { ListProductComponent } from './list-product/list-product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PaymentComponent } from './payment/payment.component';
+import { RightHomeComponent } from './Share/right-home/right-home.component';
+import { PaymentAtmComponent } from './payment-atm/payment-atm.component';
+import { PaymentCreditComponent } from './payment-credit/payment-credit.component';
+import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
 
 
 
@@ -31,14 +39,71 @@ import { ContactComponent } from './contact/contact.component';
     IntroductionComponent,
     KnowledgeCeramicsComponent,
     BlogComponent,
-    ContactComponent
+    ContactComponent,
+    ListProductComponent,
+    ProductDetailComponent,
+    CheckoutComponent,
+    PaymentComponent,
+    RightHomeComponent,
+    PaymentAtmComponent,
+    PaymentCreditComponent,
+    PaymentPaypalComponent
   ],
   imports: [
     CommonModule,
+    
     RouterModule.forChild([
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'Client-service',
+        component: ServicesComponent,
+      },
+      {
+        path: 'Client-introduction',
+        component: IntroductionComponent,
+      },
+      {
+        path: 'Knowledge-ceramics',
+        component: KnowledgeCeramicsComponent,
+      },
+      {
+        path: 'Blog',
+        component: BlogComponent,
+      },
+      {
+        path: 'Client-contact',
+        component: ContactComponent,
+      },
+      {
+        path: 'List-product',
+        component: ListProductComponent,
+      },
+      {
+        path: 'product-single',
+        component: ProductDetailComponent,
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent,
+      },
+      {
+        path: 'payment-atm',
+        component: PaymentAtmComponent,
+      },
+      {
+        path: 'payment-credit',
+        component: PaymentCreditComponent,
+      },
+      {
+        path: 'payment-paypal',
+        component: PaymentPaypalComponent,
       },
   ]),
   ]
