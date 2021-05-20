@@ -13,9 +13,23 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $table="users";
+
+    protected $fillable=[
+        'name',
+        'address ',
+        'phone',
+        'email',
+        'password',
+        'role_id ',
+        'image',
+        'created_at',
+        'updated_at',
     ];
+    public function rolemaster()
+    {
+        return $this->belongsTo('App/Model/rolemaster','role_id','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -34,11 +48,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $table="users";
-
-    public function rolemaster()
-    {
-        return $this->belongsTo('App/Model/rolemaster','id','role_id');
-    }
 }

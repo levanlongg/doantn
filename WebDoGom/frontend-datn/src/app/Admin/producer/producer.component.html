@@ -1,0 +1,456 @@
+<div class="container">
+    <div class="dashboard-page">
+        <app-menu></app-menu>
+        <section class="wrapper scrollable">
+            <nav class="user-menu">
+                <a href="javascript:;" class="main-menu-access">
+                    <i class="icon-proton-logo"></i>
+                    <i class="icon-reorder"></i>
+                </a>
+            </nav>
+            <section class="title-bar">
+                <div class="logo">
+                    <h1><a href="index.html"><img src="../assets/Admin/images/logo.png" alt="" />Colored</a></h1>
+                </div>
+                <div class="full-screen">
+                    <section class="full-top">
+                        <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+                    </section>
+                </div>
+                <div class="w3l_search">
+                    <form action="#" method="post">
+                        <input type="text" [(ngModel)]="keyword" name="keyword" placeholder="Search">
+                        <button (click)="Search()" class="btn btn-default"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <div class="header-right">
+                    <div class="profile_details_left">
+                        <div class="header-right-left">
+                            <!--notifications of menu start -->
+                            <ul class="nofitications-dropdown">
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                            class="fa fa-envelope"></i><span class="badge">3</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu w3l-msg">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new messages</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li class="odd"><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/2.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/3.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all messages</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                            class="fa fa-bell"></i><span class="badge blue">3</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu agile-notification">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new notifications</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/2.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li class="odd"><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/3.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all notifications</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                            class="fa fa-tasks"></i><span class="badge blue1">15</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu agile-task">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 8 pending tasks</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Database update</span><span
+                                                        class="percentage">40%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar yellow" style="width:40%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Dashboard done</span><span
+                                                        class="percentage">90%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar green" style="width:90%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Mobile App</span><span
+                                                        class="percentage">33%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar red" style="width: 33%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Issues fixed</span><span
+                                                        class="percentage">80%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar  blue" style="width: 80%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all pending tasks</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                        </div>
+                        <div class="profile_details">
+                            <ul>
+                                <li class="dropdown profile_details_drop">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <div class="profile_img">
+                                            <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu drp-mnu">
+                                        <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                        <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+                                        <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </section>
+            <div class="main-grid">
+                <div class="agile-grids">
+                    <!-- tables -->
+
+                    <div class="table-heading">
+                        <h2 style="color: black;">Quản lý nhà sản xuất</h2>
+                    </div>
+                    <div class="agile-tables">
+                        <div class="w3l-table-info">
+                            <button type="button" class="btn btn-success" (click)="showCreate()"><i class="glyphicon glyphicon-plus"></i></button>
+                            <table id="table">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">#</th>
+                                        <th style="text-align: center;">Tên NSX</th>
+                                        <th style="text-align: center;">Email</th>
+                                        <th style="text-align: center;">Số ĐT</th>
+                                        <th style="text-align: center;">Tình trạng</th>
+                                        <th style="text-align: center;">Tác vụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of items | paginate: { itemsPerPage: 5, currentPage: p }; let i=index;">
+                                        <td style="text-align: center;">{{i+1}}</td>
+                                        <td style="text-align: center;">{{item.name}}</td>
+                                        <td style="text-align: center;">{{item.email}}</td>
+                                        <td style="text-align: center;">{{item.phone}}</td>
+                                        <td style="text-align: center;">{{item.status}}</td>
+                                        <td style="text-align: center;">
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success" (click)="showView(item.id)"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success" (click)="showEdit(item.id)"><i class="glyphicon glyphicon-pencil"></i></button>
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success" (click)="delete(item.id)"><i class="glyphicon glyphicon-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- //tables -->
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div style="text-align: center;" class="col-md-5">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+             <!-- Create Modal -->
+             <div bsModal #Create="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Thêm nhà sản xuất</h4>
+                                <button type="button" class="close pull-right" (click)="Create.hide()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="name">Tên nhà sản xuất:</label>
+                                            <input type="text" class="form-control" value="" name="name" [(ngModel)]="entity.name" required #name="ngModel">
+                                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="label label-danger">
+                                                Tên nhà sản xuất không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" value="" name="email" [(ngModel)]="entity.email" required #email="ngModel">
+                                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="label label-danger">
+                                                Email không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="phone">Số điện thoại:</label>
+                                            <input type="number" class="form-control" value="" name="phone" [(ngModel)]="entity.phone" required #phone="ngModel">
+                                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="label label-danger">
+                                                 Số điện thoại không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="status">Tình trạng:</label>
+                                            <input type="text" class="form-control" value="" name="status" [(ngModel)]="entity.status" required #status="ngModel">
+                                            <div *ngIf="status.invalid && (status.dirty || status.touched)" class="label label-danger">
+                                                Tình trạng không được để trống (nhập 1)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ:</label>
+                                    <input type="text" class="form-control" value="" name="address" [(ngModel)]="entity.address" required #address="ngModel">
+                                    <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                                        class="label label-danger">
+                                        Địa chỉ không được để trống.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" [disabled]="!PostForm.valid" class="btn btn-success">Submit</button>
+                                <button type="button" class="btn btn-danger" (click)="Create.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Create Modal -->
+            <!-- Update Modal -->
+            <div bsModal #Update="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form #PutForm="ngForm" (ngSubmit)="UpdateForm(PutForm.value)" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Cập nhật nhà sản xuất</h4>
+                                <button type="button" class="close pull-right" (click)="Update.hide()"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label for="name">Id</label>
+                                            <input type="text" class="form-control" value="" name="id" [(ngModel)]="entity.id" required #id="ngModel">
+                                            <div *ngIf="id.invalid && (id.dirty || id.touched)" class="label label-danger">
+                                                Id không được để trống
+                                            </div>  
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="phone">Số điện thoại:</label>
+                                            <input type="number" class="form-control" value="" name="phone" [(ngModel)]="entity.phone" required #phone="ngModel">
+                                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="label label-danger">
+                                                 Số điện thoại không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" value="" name="email" [(ngModel)]="entity.email" required #email="ngModel">
+                                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="label label-danger">
+                                                Email không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="name">Tên nhà sản xuất:</label>
+                                            <input type="text" class="form-control" value="" name="name" [(ngModel)]="entity.name" required #name="ngModel">
+                                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="label label-danger">
+                                                Tên nhà sản xuất không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="status">Tình trạng:</label>
+                                            <input type="text" class="form-control" value="" name="status" [(ngModel)]="entity.status" required #status="ngModel">
+                                            <div *ngIf="status.invalid && (status.dirty || status.touched)" class="label label-danger">
+                                                Tình trạng không được để trống (nhập 1)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ:</label>
+                                    <input type="text" class="form-control" value="" name="address" [(ngModel)]="entity.address" required #address="ngModel">
+                                    <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                                        class="label label-danger">
+                                        Địa chỉ không được để trống.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success" [disabled]="!PutForm.valid">Submit</button>
+                                <button type="button" class="btn btn-danger" (click)="Update.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Update Modal -->
+            <!-- View Modal -->
+            <div bsModal #View="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form #ViewForm="ngForm" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Xem chi tiết nhà sản xuất</h4>
+                                <button type="button" class="close pull-right" (click)="View.hide()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label for="name">Id</label>
+                                            <input type="text" class="form-control" value="" name="id" [(ngModel)]="entity.id" required #id="ngModel">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="phone">Số điện thoại:</label>
+                                            <input type="number" class="form-control" value="" name="phone" [(ngModel)]="entity.phone" required #phone="ngModel">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" value="" name="email" [(ngModel)]="entity.email" required #email="ngModel">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="name">Tên nhà sản xuất:</label>
+                                            <input type="text" class="form-control" value="" name="name" [(ngModel)]="entity.name" required #name="ngModel">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="status">Tình trạng:</label>
+                                            <input type="text" class="form-control" value="" name="status" [(ngModel)]="entity.status" required #status="ngModel">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="content">Thời gian thêm:</label>
+                                            <input type="datetime" class="form-control" value="" name="created_at"
+                                                [(ngModel)]="entity.created_at" required #created_at="ngModel">
+                                        </div>
+                                        <div class="col-md-6"><label for="content">Thời gian cập nhật:</label>
+                                            <input type="datetime" class="form-control" value="" name="updated_at"
+                                                [(ngModel)]="entity.updated_at" required #updated_at="ngModel">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ:</label>
+                                    <input type="text" class="form-control" value="" name="address" [(ngModel)]="entity.address" required #address="ngModel">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="View.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- View Modal -->
+        <app-footer></app-footer>
+    </section>
+</div>
+</div>

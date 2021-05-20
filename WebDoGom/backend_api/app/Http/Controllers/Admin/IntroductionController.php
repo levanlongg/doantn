@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\IntroductionModel;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+
 
 class IntroductionController extends Controller
 {
     public function introduction()
     {
-        $introductionlist=IntroductionModel::paginate(2);
+        $introductionlist=IntroductionModel::all();
         return response()->json($introductionlist,200);
         // return response()->json(ProducerModel::get(),200);
     }
@@ -28,6 +30,40 @@ class IntroductionController extends Controller
     //post method
     public function introductionSave(Request $request)
     {
+        // $validator = Validator::make($request->all(),[
+        //         'name'=>'required',
+        //         'image'=>'required',
+        //         'content'=>'required',
+        //         'create_by'=>'required',
+        // ]);
+        // if($validator->fails())
+        // {
+        //     return response()->json(['error'=>$validator->errors()->all(),400]);
+        // }
+        // $data =new IntroductionModel();
+        // $data->name = $request->name;
+        // $data->content = $request->content;
+        // $data->create_by = $request->create_by;
+        // if($request->hasFile('image'))
+        // {
+        //     $img=($request->image);
+        //     $img_name=time().'-'.$img->getClientOriginalName();
+        //     Image::make($img)->save(storage_path("app/public/".$img_name));
+        //     $data->image=$img_name;
+        // }
+        // if($data->save())
+        // {
+        //     return response()->json([
+        //         "data"=>$data,
+        //         "msg"=>"Create product successfully"
+        //     ],201);
+        // }
+        // else{
+        //     return response()->json([
+        //         "data"=>null,
+        //         "msg"=>"Create product fails"
+        //     ],400);
+        // }
         $rules = [
             'name'=>'required',
             'image'=>'required',
@@ -47,11 +83,7 @@ class IntroductionController extends Controller
     {
         $introduction = IntroductionModel::find($id);
         if(is_null($introduction)){
-            return response()->json(['message'=>'Chưa cập nhật thông tin giới thiệu!'], 404);
-        }
-        else
-        {
-            return response()->json(['message'=>'Cập nhật thông tin giới thiệu thành công!'], 404);
+            return response()->json(['message'=>'Chưa cập nhật loại tin tức!'], 404);
         }
         $introduction->update($request->all());
         return response()->json($introduction,200);
@@ -63,11 +95,12 @@ class IntroductionController extends Controller
         if(is_null($introduction)){
             return response()->json(['message'=>'Xóa thông tin giới thiệu không thành công!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Xóa thông tin giới thiệu thành công!'], 404);
-        }
         $introduction->delete();
         return response()->json(null,204);
+    }
+    public function search($name)
+    {
+        return IntroductionModel::where("name","like","%".$name."%")
+                            ->orwhere("describle","like","%".$name."%")->get();
     }
 }

@@ -11,9 +11,8 @@ class ContactController extends Controller
 {
     public function contact()
     {
-        $contactlist=ContactModel::paginate(2);
+        $contactlist=ContactModel::all();
         return response()->json($contactlist,200);
-        // return response()->json(ProducerModel::get(),200);
     }
     //get method by id
     public function contactById($id)
@@ -47,13 +46,6 @@ class ContactController extends Controller
     public function contactUpdate(Request $request, $id)
     {
         $contact = ContactModel::find($id);
-        if(is_null($contact)){
-            return response()->json(['message'=>'Chưa cập nhật liên hệ!'], 404);
-        }
-        else
-        {
-            return response()->json(['message'=>'Cập nhật liên hệ thành công!'], 404);
-        }
         $contact->update($request->all());
         return response()->json($contact,200);
     }
@@ -64,11 +56,12 @@ class ContactController extends Controller
         if(is_null($contact)){
             return response()->json(['message'=>'Xóa liên hệ không thành công!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Xóa liên hệ thành công!'], 404);
-        }
         $contact->delete();
         return response()->json(null,204);
+    }
+    public function search($name)
+    {
+        return ContactModel::where("create_by","like","%".$name."%")
+                            ->get();
     }
 }

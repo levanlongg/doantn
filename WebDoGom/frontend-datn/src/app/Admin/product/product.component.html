@@ -1,0 +1,804 @@
+<div class="container">
+    <div class="dashboard-page">
+        <app-menu></app-menu>
+        <section class="wrapper scrollable">
+            <nav class="user-menu">
+                <a href="javascript:;" class="main-menu-access">
+                    <i class="icon-proton-logo"></i>
+                    <i class="icon-reorder"></i>
+                </a>
+            </nav>
+            <section class="title-bar">
+                <div class="logo">
+                    <h1><a href="index.html"><img src="../assets/Admin/images/logo.png" alt="" />Colored</a></h1>
+                </div>
+                <div class="full-screen">
+                    <section class="full-top">
+                        <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+                    </section>
+                </div>
+                <div class="w3l_search">
+                    <form action="#" method="post">
+                        <input type="text" [(ngModel)]="keyword" name="keyword" placeholder="Search">
+                        <button (click)="Search()" class="btn btn-default"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <div class="header-right">
+                    <div class="profile_details_left">
+                        <div class="header-right-left">
+                            <!--notifications of menu start -->
+                            <ul class="nofitications-dropdown">
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                            class="fa fa-envelope"></i><span class="badge">3</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu w3l-msg">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new messages</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li class="odd"><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/2.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/3.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all messages</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                            class="fa fa-bell"></i><span class="badge blue">3</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu agile-notification">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new notifications</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/2.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li class="odd"><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/1.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="user_img"><img src="../assets/Admin/images/3.png" alt="">
+                                                </div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all notifications</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown head-dpdn">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                            class="fa fa-tasks"></i><span class="badge blue1">15</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu agile-task">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 8 pending tasks</h3>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Database update</span><span
+                                                        class="percentage">40%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar yellow" style="width:40%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Dashboard done</span><span
+                                                        class="percentage">90%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar green" style="width:90%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Mobile App</span><span
+                                                        class="percentage">33%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar red" style="width: 33%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="task-info">
+                                                    <span class="task-desc">Issues fixed</span><span
+                                                        class="percentage">80%</span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="progress progress-striped active">
+                                                    <div class="bar  blue" style="width: 80%;"></div>
+                                                </div>
+                                            </a></li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all pending tasks</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                        </div>
+                        <div class="profile_details">
+                            <ul>
+                                <li class="dropdown profile_details_drop">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <div class="profile_img">
+                                            <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu drp-mnu">
+                                        <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                        <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+                                        <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </section>
+            <div class="main-grid">
+                <div class="agile-grids">
+                    <!-- tables -->
+                    <div class="table-heading">
+                        <h2 style="color: black;">Quản lý sản phẩm</h2>
+                    </div>
+                    <div class="tables">
+                        <div class="w3l-table-info">
+                            <button type="button" class="btn btn-success" (click)="showCreate()"><i
+                                    class="glyphicon glyphicon-plus"></i></button>
+                            <table id="table">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">#</th>
+                                        <th style="text-align: center;">Tên SP</th>
+                                        <th style="text-align: center;">Hình ảnh</th>
+                                        <th style="text-align: center;">Xuất sứ</th>
+                                        <th style="text-align: center;">Số lượng</th>
+                                        <th style="text-align: center;">Giá nhập</th>
+                                        <th style="text-align: center;">Giá bán</th>
+                                        <th style="text-align: center;">Tình trạng</th>
+                                        <th style="text-align: center;">Tác vụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let item of items | paginate: { itemsPerPage: 20, currentPage: p }; let i=index;">
+                                        <td style="text-align: center;">{{i+1}}</td>
+                                        <td style="text-align: center;">{{item.name}}</td>
+                                        <td style="text-align: center;"><img src="../assets/Admin/images/{{item.image}}"
+                                                style="width: 50px; height: 50px;" /></td>
+                                        <td style="text-align: center;">{{item.origin}}</td>
+                                        <td style="text-align: center;">{{item.amount}}</td>
+                                        <td style="text-align: center;">{{item.import_prices | currency : "VND"}}</td>
+                                        <td style="text-align: center;">{{item.sales_prices | currency : "VND"}}</td>
+                                        <td style="text-align: center;">{{item.status}}</td>
+                                        <td style="text-align: center;">
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success"><i
+                                                    class="glyphicon glyphicon-eye-open"
+                                                    (click)="showView(item.id)"></i>
+                                            </button>
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success"><i
+                                                    class="glyphicon glyphicon-pencil"
+                                                    (click)="showEdit(item.id)"></i></button>
+                                            <button style="margin-left: 1%;" type="button" class="btn btn-success"
+                                                (click)="delete(item.id)"><i
+                                                    class="glyphicon glyphicon-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- //tables -->
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div style="text-align: center;" class="col-md-5">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <!-- Create Modal -->
+            <div bsModal #Create="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+					<div class="modal-content">
+                        <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Thêm sản phẩm</h4>
+                                <button type="button" class="close pull-right" (click)="Create.hide()"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name">Tên sản phẩm:</label>
+                                        <input type="text" class="form-control" value="" name="name"
+                                            [(ngModel)]="entity.name" required #name="ngModel">
+                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                            class="label label-danger">
+                                            Tên sản phẩm không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="size">Kích thước:</label>
+                                        <input type="text" class="form-control" value="" name="size"
+                                            [(ngModel)]="entity.size" required #size="ngModel">
+                                        <div *ngIf="size.invalid && (size.dirty || size.touched)"
+                                            class="label label-danger">
+                                            Kích thước không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="origin">Xuất xứ:</label>
+                                        <input type="text" class="form-control" value="" name="origin"
+                                            [(ngModel)]="entity.origin" required #origin="ngModel">
+                                        <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
+                                            class="label label-danger">
+                                            Xuất xứ không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="material">Chất liệu:</label>
+                                            <input type="text" class="form-control" value="" name="material"
+                                                [(ngModel)]="entity.material" required #material="ngModel">
+                                            <div *ngIf="material.invalid && (material.dirty || material.touched)"
+                                                class="label label-danger">
+                                                Chất liệu không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Chú ý:</label>
+                                            <input type="text" class="form-control" value="" name="note"
+                                                [(ngModel)]="entity.note" required #note="ngModel">
+                                            <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                                                class="label label-danger">
+                                                Chú ý không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lô hàng:</label>
+                                            <input type="text" class="form-control" value="" name="shipment_number"
+                                                [(ngModel)]="entity.shipment_number" required #shipment_number="ngModel">
+                                            <div *ngIf="shipment_number.invalid && (shipment_number.dirty || shipment_number.touched)"
+                                                class="label label-danger">
+                                                Số lô hàng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Loại sản phẩm:</label>
+                                            <select name="product_type_id" [(ngModel)]="entity.product_type_id" class="form-control"
+                                                required #product_type_id ="ngModel">
+                                                <option *ngFor="let productype of listproducttype" [value]="productype.id">{{productype.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (product_type_id .dirty || product_type_id .touched)"
+                                                class="label label-danger">
+                                                Loại sản phẩm không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Tình trạng:</label>
+                                            <select name="status" [(ngModel)]="entity.status" class="form-control"
+                                                required #status ="ngModel">
+                                                <option value="1">Còn hàng</option>
+                                                <option value="0">Hết hàng</option>
+                                            </select>
+                                            <!-- <input type="number" class="form-control" value="" name="status"
+                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
+                                            <div *ngIf="status.invalid && (status.dirty || status.touched)"
+                                                class="label label-danger">
+                                                Tình trạng không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lượng:</label>
+                                            <input type="number" class="form-control" value="" name="amount"
+                                                [(ngModel)]="entity.amount" required #amount="ngModel">
+                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+                                                class="label label-danger">
+                                                Số lượng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Nhà sản xuất:</label>
+                                            <select name="producer_id" [(ngModel)]="entity.producer_id" class="form-control"
+                                                required #producer_id ="ngModel">
+                                                <option *ngFor="let producer of listproducer" [value]="producer.id">{{producer.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (producer_id .dirty || producer_id .touched)"
+                                                class="label label-danger">
+                                                Nhà sản xuất không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá nhập:</label>
+                                            <input type="number" class="form-control" value="" name="import_prices"
+                                                [(ngModel)]="entity.import_prices" required #import_prices="ngModel">
+                                            <div *ngIf="import_prices.invalid && (import_prices.dirty || import_prices.touched)"
+                                                class="label label-danger">
+                                                Giá nhập không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá bán:</label>
+                                            <input type="number" class="form-control" value="" name="sales_prices"
+                                                [(ngModel)]="entity.sales_prices" required #sales_prices="ngModel">
+                                            <div *ngIf="sales_prices.invalid && (sales_prices.dirty || sales_prices.touched)"
+                                                class="label label-danger">
+                                                Gá bán không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Giới thiệu:</label>
+                                    <textarea class="form-control" value="" name="introduction"
+                                        [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
+                                    <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
+                                        class="label label-danger">
+                                        Giới thiệu không được để trống
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Hinh ảnh:</label>
+                                    <input type="file" class="form-control" value="" name="image"
+                                        [(ngModel)]="entity.image" required #image="ngModel">
+                                    <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                        class="label label-danger">
+                                        Hình ảnh không được để trống
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" [disabled]="!PostForm.valid"
+                                    class="btn btn-success">Submit</button>
+                                <button type="button" class="btn btn-danger" (click)="Create.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Create Modal -->
+            <!-- Update Modal -->
+            <div bsModal #Update="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form #PutForm="ngForm" (ngSubmit)="UpdateForm(PutForm.value)" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Cập nhật sản phẩm</h4>
+                                <button type="button" class="close pull-right" (click)="Update.hide()"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name">Id</label>
+                                        <input type="hidden" [(ngModel)]="checkedid">
+                                        <input type="number" class="form-control" value="" name="id"
+                                            [(ngModel)]="entity.id" required #id="ngModel">
+                                        <div *ngIf="id.invalid && (id.dirty || id.touched)"
+                                            class="label label-danger">
+                                            Id không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="size">Kích thước:</label>
+                                        <input type="text" class="form-control" value="" name="size"
+                                            [(ngModel)]="entity.size" required #size="ngModel">
+                                        <div *ngIf="size.invalid && (size.dirty || size.touched)"
+                                            class="label label-danger">
+                                            Kích thước không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name">Tên sản phẩm:</label>
+                                        <input type="text" class="form-control" value="" name="name"
+                                            [(ngModel)]="entity.name" required #name="ngModel">
+                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                            class="label label-danger">
+                                            Tên sản phẩm không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="origin">Xuất xứ:</label>
+                                        <input type="text" class="form-control" value="" name="origin"
+                                            [(ngModel)]="entity.origin" required #origin="ngModel">
+                                        <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
+                                            class="label label-danger">
+                                            Xuất xứ không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="material">Chất liệu:</label>
+                                            <input type="text" class="form-control" value="" name="material"
+                                                [(ngModel)]="entity.material" required #material="ngModel">
+                                            <div *ngIf="material.invalid && (material.dirty || material.touched)"
+                                                class="label label-danger">
+                                                Chất liệu không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Chú ý:</label>
+                                            <input type="text" class="form-control" value="" name="note"
+                                                [(ngModel)]="entity.note" required #note="ngModel">
+                                            <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                                                class="label label-danger">
+                                                Chú ý không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lô hàng:</label>
+                                            <input type="text" class="form-control" value="" name="shipment_number"
+                                                [(ngModel)]="entity.shipment_number" required #shipment_number="ngModel">
+                                            <div *ngIf="shipment_number.invalid && (shipment_number.dirty || shipment_number.touched)"
+                                                class="label label-danger">
+                                                Số lô hàng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Loại sản phẩm:</label>
+                                            <select name="product_type_id" [(ngModel)]="entity.product_type_id" class="form-control"
+                                                required #product_type_id ="ngModel">
+                                                <option *ngFor="let productype of listproducttype" [value]="productype.id">{{productype.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (product_type_id .dirty || product_type_id .touched)"
+                                                class="label label-danger">
+                                                Loại sản phẩm không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Tình trạng:</label>
+                                            <select name="status" [(ngModel)]="entity.status" class="form-control"
+                                                required #status ="ngModel">
+                                                <option value="1">Còn hàng</option>
+                                                <option value="0">Hết hàng</option>
+                                            </select>
+                                            <!-- <input type="number" class="form-control" value="" name="status"
+                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
+                                            <div *ngIf="status.invalid && (status.dirty || status.touched)"
+                                                class="label label-danger">
+                                                Tình trạng không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lượng:</label>
+                                            <input type="number" class="form-control" value="" name="amount"
+                                                [(ngModel)]="entity.amount" required #amount="ngModel">
+                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+                                                class="label label-danger">
+                                                Số lượng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Nhà sản xuất:</label>
+                                            <select name="producer_id" [(ngModel)]="entity.producer_id" class="form-control"
+                                                required #producer_id ="ngModel">
+                                                <option *ngFor="let producer of listproducer" [value]="producer.id">{{producer.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (producer_id .dirty || producer_id .touched)"
+                                                class="label label-danger">
+                                                Nhà sản xuất không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá nhập:</label>
+                                            <input type="number" class="form-control" value="" name="import_prices"
+                                                [(ngModel)]="entity.import_prices" required #import_prices="ngModel">
+                                            <div *ngIf="import_prices.invalid && (import_prices.dirty || import_prices.touched)"
+                                                class="label label-danger">
+                                                Giá nhập không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá bán:</label>
+                                            <input type="number" class="form-control" value="" name="sales_prices"
+                                                [(ngModel)]="entity.sales_prices" required #sales_prices="ngModel">
+                                            <div *ngIf="sales_prices.invalid && (sales_prices.dirty || sales_prices.touched)"
+                                                class="label label-danger">
+                                                Gá bán không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Giới thiệu:</label>
+                                    <textarea class="form-control" value="" name="introduction"
+                                        [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
+                                    <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
+                                        class="label label-danger">
+                                        Giới thiệu không được để trống
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Hinh ảnh:</label>
+                                    <input type="file" class="form-control" value="" name="image"
+                                        [(ngModel)]="entity.image" required #image="ngModel">
+                                    <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                        class="label label-danger">
+                                        Hình ảnh không được để trống
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success" [disabled]="!PutForm.valid">Submit</button>
+                                <button type="button" class="btn btn-danger" (click)="Update.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Update Modal -->
+            <!-- View Modal -->
+            <div bsModal #View="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form #ViewForm="ngForm" *ngIf="entity">
+                            <div class="modal-header">
+                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Xem chi tiết sản phẩm</h4>
+                                <button type="button" class="close pull-right" (click)="View.hide()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="name">Id</label>
+                                        <input type="hidden" [(ngModel)]="checkedid">
+                                        <input type="number" class="form-control" value="" name="id"
+                                            [(ngModel)]="entity.id" required #id="ngModel">
+                                        <div *ngIf="id.invalid && (id.dirty || id.touched)"
+                                            class="label label-danger">
+                                            Id không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="size">Kích thước:</label>
+                                        <input type="text" class="form-control" value="" name="size"
+                                            [(ngModel)]="entity.size" required #size="ngModel">
+                                        <div *ngIf="size.invalid && (size.dirty || size.touched)"
+                                            class="label label-danger">
+                                            Kích thước không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name">Tên sản phẩm:</label>
+                                        <input type="text" class="form-control" value="" name="name"
+                                            [(ngModel)]="entity.name" required #name="ngModel">
+                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                            class="label label-danger">
+                                            Tên sản phẩm không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="origin">Xuất xứ:</label>
+                                        <input type="text" class="form-control" value="" name="origin"
+                                            [(ngModel)]="entity.origin" required #origin="ngModel">
+                                        <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
+                                            class="label label-danger">
+                                            Xuất xứ không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="material">Chất liệu:</label>
+                                            <input type="text" class="form-control" value="" name="material"
+                                                [(ngModel)]="entity.material" required #material="ngModel">
+                                            <div *ngIf="material.invalid && (material.dirty || material.touched)"
+                                                class="label label-danger">
+                                                Chất liệu không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Chú ý:</label>
+                                            <input type="text" class="form-control" value="" name="note"
+                                                [(ngModel)]="entity.note" required #note="ngModel">
+                                            <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                                                class="label label-danger">
+                                                Chú ý không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lô hàng:</label>
+                                            <input type="text" class="form-control" value="" name="shipment_number"
+                                                [(ngModel)]="entity.shipment_number" required #shipment_number="ngModel">
+                                            <div *ngIf="shipment_number.invalid && (shipment_number.dirty || shipment_number.touched)"
+                                                class="label label-danger">
+                                                Số lô hàng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Loại sản phẩm:</label>
+                                            <select name="product_type_id" [(ngModel)]="entity.product_type_id" class="form-control"
+                                                required #product_type_id ="ngModel">
+                                                <option *ngFor="let productype of listproducttype" [value]="productype.id">{{productype.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (product_type_id .dirty || product_type_id .touched)"
+                                                class="label label-danger">
+                                                Loại sản phẩm không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Tình trạng:</label>
+                                            <select name="status" [(ngModel)]="entity.status" class="form-control"
+                                                required #status ="ngModel">
+                                                <option value="1">Còn hàng</option>
+                                                <option value="0">Hết hàng</option>
+                                            </select>
+                                            <!-- <input type="number" class="form-control" value="" name="status"
+                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
+                                            <div *ngIf="status.invalid && (status.dirty || status.touched)"
+                                                class="label label-danger">
+                                                Tình trạng không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="name">Số lượng:</label>
+                                            <input type="number" class="form-control" value="" name="amount"
+                                                [(ngModel)]="entity.amount" required #amount="ngModel">
+                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+                                                class="label label-danger">
+                                                Số lượng không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="name">Nhà sản xuất:</label>
+                                            <select name="producer_id" [(ngModel)]="entity.producer_id" class="form-control"
+                                                required #producer_id ="ngModel">
+                                                <option *ngFor="let producer of listproducer" [value]="producer.id">{{producer.name}}</option>
+                                            </select>
+                                            <div *ngIf="product_type_id .invalid && (producer_id .dirty || producer_id .touched)"
+                                                class="label label-danger">
+                                                Nhà sản xuất không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá nhập:</label>
+                                            <input type="number" class="form-control" value="" name="import_prices"
+                                                [(ngModel)]="entity.import_prices" required #import_prices="ngModel">
+                                            <div *ngIf="import_prices.invalid && (import_prices.dirty || import_prices.touched)"
+                                                class="label label-danger">
+                                                Giá nhập không được để trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="number">Giá bán:</label>
+                                            <input type="number" class="form-control" value="" name="sales_prices"
+                                                [(ngModel)]="entity.sales_prices" required #sales_prices="ngModel">
+                                            <div *ngIf="sales_prices.invalid && (sales_prices.dirty || sales_prices.touched)"
+                                                class="label label-danger">
+                                                Gá bán không được để trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Giới thiệu:</label>
+                                    <textarea class="form-control" value="" name="introduction"
+                                        [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
+                                    <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
+                                        class="label label-danger">
+                                        Giới thiệu không được để trống
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Hinh ảnh:</label>
+                                    <input type="text" class="form-control" value="" name="image"
+                                        [(ngModel)]="entity.image" required #image="ngModel">
+                                    <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                        class="label label-danger">
+                                        Hình ảnh không được để trống
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="View.hide()">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- View Modal -->
+            <app-footer></app-footer>
+        </section>
+    </div>
+</div>
+<!-- Model -->

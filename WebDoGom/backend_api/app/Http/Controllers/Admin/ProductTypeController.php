@@ -12,9 +12,9 @@ class ProductTypeController extends Controller
     //get method
     public function producttype()
     {
-        $producttypelist=ProductTypeModel::paginate(2);
-        return response()->json($producttypelist,200);
-        // return response()->json(ProducerModel::get(),200);
+        // $producttypelist=ProductTypeModel::paginate(2);
+        // return response()->json($producttypelist,200);
+        return response()->json(ProductTypeModel::get(),200);
     }
     //get method by id
     public function producttypeById($id)
@@ -48,10 +48,6 @@ class ProductTypeController extends Controller
         if(is_null($producttype)){
             return response()->json(['message'=>'Chưa cập nhật loại sản phẩm!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Cập nhật loại sản phẩm thành công!'], 404);
-        }
         $producttype->update($request->all());
         return response()->json($producttype,200);
     }
@@ -62,11 +58,12 @@ class ProductTypeController extends Controller
         if(is_null($producttype)){
             return response()->json(['message'=>'Xóa loại sản phẩm không thành công!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Xóa loại sản phẩm thành công!'], 404);
-        }
         $producttype->delete();
         return response()->json(null,204);
+    }
+    public function search($name)
+    {
+        return ProductTypeModel::where("name","like","%".$name."%")
+                            ->orwhere("describle","like","%".$name."%")->get();
     }
 }

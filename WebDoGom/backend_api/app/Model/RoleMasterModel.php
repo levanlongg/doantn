@@ -10,10 +10,8 @@ class RoleMasterModel extends Model
 
     public function users()
     {
-        return $this->hasMany('App/Model/users','role_id ','id');
+        return $this->hasMany('App/Model/users','role_id','id');
     }
-
-
     protected $fillable=[
         'name',
         'created_at',

@@ -8,13 +8,19 @@ class UsersModel extends Model
 {
     protected $table="users";
 
+    public function rolemaster()
+    {
+        return $this->belongsTo('App/Model/rolemaster','role_id','id');
+    }
+
     protected $fillable=[
         'name',
-        'email ',
-        'email_verified_at',
+        'address ',
+        'phone',
+        'email',
         'password',
         'role_id ',
-        'remember_token',
+        'image',
         'created_at',
         'updated_at',
     ];

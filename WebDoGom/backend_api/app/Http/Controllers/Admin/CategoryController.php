@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\CategoryModel;
@@ -11,9 +10,9 @@ class CategoryController extends Controller
 {
     public function category()
     {
-        $categorylist=CategoryModel::paginate(2);
+        $categorylist=CategoryModel::all();
         return response()->json($categorylist,200);
-        // return response()->json(ProducerModel::get(),200);
+        
     }
     //get method by id
     public function categoryById($id)
@@ -23,14 +22,13 @@ class CategoryController extends Controller
             return response()->json(['message'=>'Danh mục cần tìm không tồn tại!'], 404);
         }
         return response()->json($producer,200);
-        //return response()->json(ProducerModel::find($id),200);
     }
     //post method
     public function categorySave(Request $request)
     {
         $rules = [
-            'name'=>'required|min:1|max:30',
-            'create_by'=>'required|min:1|max:30',
+            'name'=>'required',
+            'create_by'=>'required',
             'description'=>'required|min:1|max:1000',
             'show_on_home'=>'required',
             'show_on_admin'=>'required',
@@ -50,10 +48,6 @@ class CategoryController extends Controller
         if(is_null($category)){
             return response()->json(['message'=>'Chưa cập nhật danh mục!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Cập nhật danh mục thành công!'], 404);
-        }
         $category->update($request->all());
         return response()->json($category,200);
     }
@@ -64,11 +58,13 @@ class CategoryController extends Controller
         if(is_null($category)){
             return response()->json(['message'=>'Xóa danh mục không thành công!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Xóa danh mục thành công!'], 404);
-        }
         $category->delete();
         return response()->json(null,204);
+    }
+    public function search($name)
+    {
+        return CategoryModel::where("name","like","%".$name."%")
+                            ->orwhere("create_by","like","%".$name."%")
+                            ->orwhere("description","like","%".$name."%")->get();
     }
 }

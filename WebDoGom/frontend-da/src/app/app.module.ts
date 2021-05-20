@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ClientModule } from './Client/client.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AdminModule } from './Admin/admin.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AdminModule } from './Admin/admin.module';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ClientModule,
     AdminModule

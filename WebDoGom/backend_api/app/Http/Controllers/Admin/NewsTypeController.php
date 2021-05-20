@@ -11,7 +11,7 @@ class NewsTypeController extends Controller
 {
     public function newstype()
     {
-        $newstypelist=NewsTypeModel::paginate(2);
+        $newstypelist=NewsTypeModel::all();
         return response()->json($newstypelist,200);
     }
     //get method by id
@@ -24,38 +24,6 @@ class NewsTypeController extends Controller
         return response()->json($newstype,200);
     }
     //post method
-    // public function newstypeSave(Request $request)
-    // {
-    //     $rules = [
-    //         'new_type_name'=>'required',
-    //         'description'=>'required',
-    //         // 'file' => 'required',
-    //     ];
-    //     $validator= Validator::make($request->all(),$rules);
-    //     if($validator->fails())
-    //     {
-    //        return response()->json($validator->errors(),401);
-    //     }
-
-    //     if ($files = $request->file('file')) {
-             
-    //         //store file into document folder
-    //         $file = $request->file->store('public/documents');
- 
-    //         //store your file into database
-    //         $document = new NewsTypeModel();
-    //         $document->description = $file;
-    //         $document->new_type_name = $request->new_type_name;
-    //         $document->save();
-              
-    //         return response()->json([
-    //             "success" => true,
-    //             "message" => "File successfully uploaded",
-    //             "file" => $file
-    //         ]);
-  
-    //     }
-    // }
     public function newstypeSave(Request $request)
     {
         $rules = [
@@ -77,10 +45,6 @@ class NewsTypeController extends Controller
         if(is_null($newstype)){
             return response()->json(['message'=>'Chưa cập nhật loại tin tức!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Cập nhật loại tin tức thành công!'], 404);
-        }
         $newstype->update($request->all());
         return response()->json($newstype,200);
     }
@@ -91,11 +55,13 @@ class NewsTypeController extends Controller
         if(is_null($newstype)){
             return response()->json(['message'=>'Xóa loại tin tức không thành công!'], 404);
         }
-        else
-        {
-            return response()->json(['message'=>'Xóa loại tin tức thành công!'], 404);
-        }
         $newstype->delete();
         return response()->json(null,204);
+    }
+    //search method
+    public function search($name)
+    {
+        return NewsTypeModel::where("new_type_name","like","%".$name."%")
+                            ->orwhere("description","like","%".$name."%")->get();
     }
 }
