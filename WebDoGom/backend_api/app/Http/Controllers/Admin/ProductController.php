@@ -17,11 +17,11 @@ class ProductController extends Controller
     }
     public function productById($id)
     {
-        $producttype = ProductModel::find($id);
-        if (is_null($producttype)) {
+        $product = ProductModel::find($id);
+        if (is_null($product)) {
             return response()->json(['message' => 'Loại sản phẩm cần tìm không tồn tại!'], 404);
         }
-        return response()->json($producttype, 200);
+        return response()->json($product, 200);
     }
     public function saveProduct(Request $request)
     {
@@ -40,6 +40,7 @@ class ProductController extends Controller
             'producer_id' => 'required',
             'import_prices' => 'required',
             'sales_prices' => 'required',
+            'show_home' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()->all(), 400]);
@@ -58,6 +59,7 @@ class ProductController extends Controller
         $data->producer_id = $request->producer_id;
         $data->import_prices = $request->import_prices;
         $data->sales_prices = $request->sales_prices;
+        $data->show_home = $request->show_home;
         $data->image = $request->image;
         $data->save();
         if ($data->save()) {
@@ -112,6 +114,7 @@ class ProductController extends Controller
             'producer_id' => $request->producer_id,
             'import_prices' => $request->import_prices,
             'sales_prices' => $request->sales_prices,
+            'show_home' => $request->show_home,
             'image' => $request->image,
         ]);
         return response()->json($result, 200);

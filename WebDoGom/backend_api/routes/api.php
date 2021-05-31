@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\Rolemaster;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -121,7 +122,18 @@ Route::get('order/{id}','Admin\OrderController@orderById');
 Route::put('order/{id}','Admin\OrderController@orderUpdate');
 Route::delete('order/{order}','Admin\OrderController@orderDelete');
 
+// CLIENT
+//home
+Route::get('tranh-gom-client','Client\HomeController@Home_tranh_gom');
+Route::get('gom-trang-tri-client','Client\HomeController@Home_gom_trang_tri');
+Route::get('gom-phong-thuy-client','Client\HomeController@Home_gom_phong_thuy');
+Route::get('gom-gia-dung-client','Client\HomeController@Home_gom_gia_dung');
+//list-product
+Route::get('danh-sach-san-pham','Client\HomeController@List_product');
+Route::get('search-pro-client/{name}',[HomeController::class,'search']);
 
+//product-detail
+Route::get('chi-tiet-san-pham/{id}','Client\HomeController@Product_detail');
 
 // Route::group(['middleware'=>'auth:api'],function(){
 //     Route::apiResource('producer','producer');

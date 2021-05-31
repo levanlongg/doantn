@@ -1,1 +1,462 @@
-<p>home works!</p>
+<!-- top-header -->
+<div class="container">
+    <section style="margin-left: -4%;" class="wrapper scrollable">
+        <div class="header-most-top">
+            <p>Gốm Sứ Bát Tràng - Tinh Hoa Gốm Sứ Việt</p>
+        </div>
+        <!-- //top-header -->
+        <!-- header-bot-->
+        <div class="header-bot">
+            <div class="header-bot_inner_wthreeinfo_header_mid">
+                <!-- header-bot-->
+                <div class="col-md-4 logo_agile">
+                    <h1>
+                        <a href="index.html">
+                            <span>G</span>ốm Sứ Bát
+                            <span>T</span>ràng
+                            <img style="width: 100px; height: 100px" src="../assets/Client/images/logo1.png" alt=" ">
+                        </a>
+                    </h1>
+                </div>
+                <!-- header-bot -->
+                <div class="col-md-8 header1">
+                    <!-- header lists -->
+                    <ul>
+                        <li>
+                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
+                                <span class="fa fa-map-marker" aria-hidden="true"></span> Chỉ đường</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                                <span class="fa fa-truck" aria-hidden="true"></span>Vận chuyển</a>
+                        </li>
+                        <li>
+                            <span class="fa fa-phone" aria-hidden="true"></span> 0987654321
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" (click)="showCreate()">
+                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký </a>
+                        </li>
+                    </ul>
+                    <!-- //header lists -->
+                    <!-- search -->
+                    <div class="agileits_search2">
+                        <form action="#" method="post">
+                            <input name="Search" type="search" placeholder="Chúng tôi có thể giúp gì cho bạn?" required="">
+                            <button type="submit" class="btn2 btn-default" aria-label="Left Align">
+                                <span class="fa fa-search" aria-hidden="true"> </span>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- //search -->
+                    <!-- cart details -->
+                    <div class="top_nav_right2">
+                        <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                            <form class="last">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="display" value="1">
+                                <a [routerLink]="['/client-checkout']"routerLinkActive="router-link-active">
+                                <button class="w3view-cart1" type="submit" name="submit" value="">
+                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                </button></a>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- //cart details -->
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- shop locator (popup) -->
+        <!-- signin Model -->
+        <!-- Modal1 -->
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body modal-body-sub_agile">
+                        <div class="main-mailposi">
+                            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                        </div>
+                        <div class="modal_body_left modal_body_left1">
+                            <h3 class="agileinfo_sign">Sign In </h3>
+                            <p>
+                                Sign In now, Let's start your Grocery Shopping. Don't have an account?
+                                <a href="#" data-toggle="modal" data-target="#myModal2">
+                                    Sign Up Now</a>
+                            </p>
+                            <form action="#" method="post">
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" placeholder="User Name" name="Name" required="">
+                                </div>
+                                <div class="styled-input">
+                                    <input type="password" placeholder="Password" name="password" required="">
+                                </div>
+                                <input type="submit" value="Sign In">
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- //Modal content-->
+            </div>
+        </div>
+        <!-- //Modal1 -->
+        <!-- //signin Model -->
+        <!-- signup Model -->
+        <!-- Modal2 -->
+        <div bsModal #Create="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
+                        <div class="modal-header">
+                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Đăng ký</h4>
+                            <button type="button" class="close pull-right" (click)="Create.hide()"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="name">Tên người dùng:</label>
+                                    <input type="text" class="form-control" value="" name="name"
+                                        [(ngModel)]="entity.name" required #name="ngModel">
+                                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                        class="label label-danger">
+                                        Tên người dùng không được để trống
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="name">So dien thoai:</label>
+                                    <input type="text" class="form-control" value="" name="phone"
+                                        [(ngModel)]="entity.phone" required #phone="ngModel">
+                                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                                        class="label label-danger">
+                                        Số điện thoại không được để trống
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="name">Dia chi:</label>
+                                        <input type="text" class="form-control" value="" name="address"
+                                            [(ngModel)]="entity.address" required #address="ngModel">
+                                        <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                                            class="label label-danger">
+                                            Địa chỉ không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="name">Mat khau:</label>
+                                        <input type="password" class="form-control" value="" name="password"
+                                            [(ngModel)]="entity.password" required #password="ngModel">
+                                        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                            class="label label-danger">
+                                            Mật khẩu không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="name"> Quyền:</label>
+                                        <select name="role_id" [(ngModel)]="entity.role_id" class="form-control" required #role_id="ngModel">
+                                            <option value="9">Quyền người dùng</option>
+                                        </select>
+                                        <div *ngIf="role_id.invalid && (role_id.dirty || role_id.touched)"
+                                            class="label label-danger">
+                                            Tên quyền người dùng không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="name">Email:</label>
+                                        <input type="text" class="form-control" value="" name="email"
+                                            [(ngModel)]="entity.email" required #email="ngModel">
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                            class="label label-danger">
+                                            Email không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Hinh anh:</label>
+                                <input type="file" class="form-control" value="" name="image"
+                                    [(ngModel)]="entity.image" required #image="ngModel">
+                                <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                    class="label label-danger">
+                                    Hình ảnh không được để trống
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" [disabled]="!PostForm.valid"
+                                class="btn btn-success">Submit</button>
+                            <button type="button" class="btn btn-danger" (click)="Create.hide()">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- //Modal2 -->
+        <!-- //signup Model -->
+        <!-- //header-bot -->
+        <!-- navigation -->
+        <div class="ban-top">
+            <div class="container">
+                <div class="top_nav_left1">
+                    <nav class="navbar navbar-default1">
+                        <div class="container-fluid">
+                            
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav menu__list">
+                                    <li class="active">
+                                        <a class="nav-stylehead"  [routerLink]="['/home']"routerLinkActive="router-link-active">Trang chủ
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a class="nav-stylehead" [routerLink]="['/list-product-client']"routerLinkActive="router-link-active">Sản phẩm</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="nav-stylehead" [routerLink]="['/introduction-client']"routerLinkActive="router-link-active">Giới thiệu</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="nav-stylehead" [routerLink]="['/services-client']" routerLinkActive="router-link-active">Dịch vụ</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="nav-stylehead" [routerLink]="['/knowleage-ceramics-client']"routerLinkActive="router-link-active">Kiến thức về gốm</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-stylehead" [routerLink]="['/client-blog']"routerLinkActive="router-link-active">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-stylehead" [routerLink]="['/home']"routerLinkActive="router-link-active">Chính sách</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-stylehead" [routerLink]="['/contact-client']"routerLinkActive="router-link-active">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- //navigation -->
+        <!-- banner -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <app-slide-home></app-slide-home>
+        </div>
+        <!-- //banner -->
+
+        <!-- top Products -->
+        <div class="row">
+            <div class="ads-grid">
+                <div class="container-fluid">
+
+                    <!-- tittle heading -->
+                    <h3 class="tittle-w3l">Sản phẩm nổi bật
+                        <span class="heading-style">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <app-left-home></app-left-home>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="agileinfo-ads-display col-md-12">
+                                <div class="wrapper">
+                                    <!-- first section (nuts) -->
+        
+                                    <div class="product-sec1">
+                                        <h3 class="heading-tittle">Tranh gốm</h3>
+                                        <div *ngFor="let product of pictureceramic">
+                                            <div class="col-md-4 product-men">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item">
+                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
+                                                            style="width:230px;height: 150px;" />
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a [routerLink]="['/product-detail-client',product.id]"
+																routerLinkActive="router-link-active"
+																class="link-product-add-cart">Xem chi tiết</a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="product-new-top">New</span>
+                                                    </div>
+                                                    <div class="item-info-product ">
+                                                        <h4>
+                                                            <a>{{product.name}}</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">{{product.sales_prices | currency :
+                                                                "VND"}}</span>
+                                                            <del>{{product.import_prices | currency : "VND"}}</del>
+                                                        </div>
+                                                        <div
+                                                            class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form>
+                                                                <fieldset>
+                                                                    <input type="submit" name="submit" value="Add to cart" class="button"
+                                                                    (click)="addToCart(product, quantity)" />
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+        
+                                    <!-- //first section (nuts) -->
+                                    <!-- second section (nuts special) -->
+                                    <div class="product-sec1 product-sec2">
+                                        <div class="col-xs-10 effect-bg">
+                                            <h3 class="">Gốm Sứ Bát Tràng</h3>
+                                            <h6>Tinh Hoa Gốm Sứ Việt</h6>
+                                            <p>Chính hiệu 100%</p>
+                                        </div>
+                                        <h3 class="w3l-nut-middle"></h3>
+                                        <div class="col-xs-2 bg-right-nut">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <!-- //second section (nuts special) -->
+                                    <!-- third section (oils) -->
+                                    <div class="product-sec1">
+                                        <h3 class="heading-tittle">Gốm phong thủy</h3>
+                                        <div *ngFor="let product of fengshuiceramic">
+                                            <div class="col-md-4 product-men">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item">
+                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
+                                                            style="width:230px;height: 190px;" />
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a [routerLink]="['/product-detail-client',product.id]"
+																routerLinkActive="router-link-active"
+																class="link-product-add-cart">Xem chi tiết</a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="product-new-top">New</span>
+                                                    </div>
+                                                    <div class="item-info-product ">
+                                                        <h4>
+                                                            <a href="single.html">{{product.name}}</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">{{product.sales_prices | currency :
+                                                                "VND"}}</span>
+                                                            <del>{{product.import_prices | currency : "VND"}}</del>
+                                                        </div>
+                                                        <div
+                                                            class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form>
+                                                                <fieldset>
+                                                                    <input type="submit" name="submit" value="Add to cart" class="button"
+                                                                    (click)="addToCart(product, quantity)" />
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <!-- //third section (oils) -->
+                                    <!-- fourth section (noodles) -->
+                                    <div class="product-sec1">
+                                        <h3 class="heading-tittle">Gốm trang trí</h3>
+                                        <div *ngFor="let product of decorativeceramic">
+                                            <div class="col-md-4 product-men">
+                                                <div class="men-pro-item simpleCart_shelfItem">
+                                                    <div class="men-thumb-item">
+                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
+                                                            style="width:230px;height: 190px;" />
+                                                        <div class="men-cart-pro">
+                                                            <div class="inner-men-cart-pro">
+                                                                <a [routerLink]="['/product-detail-client',product.id]"
+																routerLinkActive="router-link-active"
+																class="link-product-add-cart">Xem chi tiết</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-info-product ">
+                                                        <h4>
+                                                            <a href="">{{product.name}}</a>
+                                                        </h4>
+                                                        <div class="info-product-price">
+                                                            <span class="item_price">{{product.sales_prices | currency :"VND"}}</span>
+                                                            <del>{{product.import_prices | currency : "VND"}}</del>
+                                                        </div>
+                                                        <div
+                                                            class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                            <form>
+                                                                <fieldset>
+                                                                    <input type="submit" name="submit" value="Add to cart" class="button"
+                                                                    (click)="addToCart(product, quantity)" />
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <!-- //fourth section (noodles) -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        <!-- //top products -->
+        <!-- newsletter -->
+        <div style="margin-top: 35%;">
+            <app-newsletter></app-newsletter>
+        </div>
+        <!-- //newsletter -->
+        <!-- footer -->
+        <app-footer></app-footer>
+    </section>
+</div>
+
+<!-- cart-js -->
+<script src="./assets/Client/js/minicart.js"></script>
+<!-- //cart-js -->
