@@ -9,10 +9,10 @@ class ContactModel extends Model
     protected $table="contact";
 
     protected $fillable=[
-        'address',
-        'phone',
+        'subject',
+        'message',
         'email',
-        'website',
+        'message1',
         'create_by',
         'created_at',
         'updated_at',

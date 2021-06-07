@@ -16,19 +16,14 @@ class OderModel extends Model
     {
         return $this->belongsTo('App/Model/customer','customer_id','id');
     }
-
     protected $fillable=[
-        'customer_id  ',
         'order_name',
         'order_address',
         'order_email',
         'order_phone',
         'order_note',
-        'total_money',
-        'paypal_acount',
-        'pay_online',
-        'pay_offline',
-        'prpayment_statusice',
+        'totalMoney',
+        'payment_status',
         'created_at',
         'updated_at',
     ];

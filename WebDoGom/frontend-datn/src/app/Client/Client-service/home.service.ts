@@ -17,6 +17,7 @@ export class HomeService {
   public urlAPI2 = environment.apiUrl + '/gom-trang-tri-client';
   public urlAPI3 = environment.apiUrl + '/gom-phong-thuy-client';
   public urlAPI4 = environment.apiUrl + '/gom-gia-dung-client';
+  public urlAPI5 = environment.apiUrl + '/client-introduction';
   //public urlAPIs = environment.apiUrl + '/searchca';
   constructor(private _http: HttpClient) { }
 
@@ -40,6 +41,12 @@ export class HomeService {
 
   get_household_ceramic(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI4).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  get_client_introduction(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI5).pipe(map(res => {
       return res;
     }));
   }

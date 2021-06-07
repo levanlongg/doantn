@@ -557,30 +557,30 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.html">Trang chủ
+									<a class="nav-stylehead"  [routerLink]="['/home']"routerLinkActive="router-link-active">Trang chủ
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="about.html">Giới thiệu</a>
+									<a class="nav-stylehead" [routerLink]="['/list-product-client']"routerLinkActive="router-link-active">Sản phẩm</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="about.html">Dịch vụ</a>
+									<a class="nav-stylehead" [routerLink]="['/introduction-client']"routerLinkActive="router-link-active">Giới thiệu</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="about.html">Kiến thức về gốm</a>
+									<a class="nav-stylehead" [routerLink]="['/services-client']"routerLinkActive="router-link-active">Dịch vụ</a>
+								</li>
+								<li class="">
+									<a class="nav-stylehead" [routerLink]="['/knowleage-ceramics-client']"routerLinkActive="router-link-active">Kiến thức về gốm</a>
 								</li>
 								<li>
-									<a class="nav-stylehead" href="faqs.html">Blog</a>
+									<a class="nav-stylehead" [routerLink]="['/client-blog']"routerLinkActive="router-link-active">Blog</a>
 								</li>
 								<li>
-									<a class="nav-stylehead" href="faqs.html">Hướng dẫn mua hàng</a>
+									<a class="nav-stylehead" [routerLink]="['/policy']"routerLinkActive="router-link-active">Chính sách</a>
 								</li>
 								<li>
-									<a class="nav-stylehead" href="faqs.html">Chính sách</a>
-								</li>
-								<li>
-									<a class="nav-stylehead" href="faqs.html">Liên hệ</a>
+									<a class="nav-stylehead" [routerLink]="['/contact-client']"routerLinkActive="router-link-active">Liên hệ</a>
 								</li>
 							</ul>
 						</div>

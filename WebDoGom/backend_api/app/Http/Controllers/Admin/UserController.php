@@ -42,7 +42,7 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->role_id = $request->role_id;
         $user->image = $request->image;
         // $get_image1 = $request->file('image');

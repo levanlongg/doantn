@@ -71,110 +71,39 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="vertical-menu">
-                        <a href="#" class="active">+ Kiến thức về gốm</a>
-                        <a href="#">- Kiến thức gốm sứ vẽ vàng</a>
-                        <a href="#">- Kiến thức trang sứ</a>
-                        <a href="#">- Kiến thức lộc bình</a>
-                        <a href="#">- Kiến thức tượng phong thủy</a>
-                        <a href="#">- Kiến thức tranh ghép gốm, sứ</a>
-                        <a href="#">- Kiến thức gốm quà tặng</a>
-                        <a href="#">- Kiến thức bình hút lộc</a>
-                        <a href="#">- Kiến thức đồ thờ cúng</a>
+                        <a class="active">+ Kiến thức về gốm</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức gốm sứ vẽ vàng</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức trang sứ</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức lộc bình</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức tượng phong thủy</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức tranh ghép gốm, sứ</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức gốm quà tặng</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức bình hút lộc</a>
+                        <a [routerLink]="['/knowleage-ceramics-client']" routerLinkActive="router-link-active">- Kiến thức đồ thờ cúng</a>
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
+                    <div *ngFor="let item of blog | paginate: { itemsPerPage: 6, currentPage: p }">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="welcome-img">
+                                    <img src="../assets/Client/blogimage/{{item.image}}" alt="" style="height:200px; width: 300px;">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
+                            <div class="col-sm-9">
+                                <p><a class="a1">{{item.title}}</a>
+                                <p>{{item.description}}</p>
+                                <p><a [routerLink]="['/blog-detail',item.id]" routerLinkActive="router-link-active">Xem chi tiết >>></a></p>
                             </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
+                        </div><br />
+                    </div>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
-                            </div>
+                        <div class="col-md-4"></div>
+                        <div style="text-align: center;" class="col-md-4">
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
                         </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="welcome-img">
-                                <img class="img-format" src="../assets/Client/images/logo1.png" alt="duong-gom-su">
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <p><a class="a1" href="#">Đường tranh gốm sứ kỷ lục thế giới ở Hà Nội có thể được nối dài</a></p>
-                            <p>Con đường gốm sứ ở Hà Nội sau gần 10 năm nhận kỷ lục Guinness có thể được nối dài về phía cầu
-                                Nghi Tàm mới hạ cốt.</p>
-                            <p><a href="#">Xem chi tiết >>></a></p>
-                        </div>
-                    </div><br/>
-                    
+                        <div class="col-md-4"></div>
+                    </div>
                 </div>
             </div>
         </div>

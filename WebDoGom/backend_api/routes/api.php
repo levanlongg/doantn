@@ -3,12 +3,14 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NewsTypeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProducerController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\Rolemaster;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\HomeController;
+use App\Model\OderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -116,12 +118,12 @@ Route::post('users','Admin\UserController@usersSave');
 Route::put('users/{id}','Admin\UserController@usersUpdate');
 Route::delete('users/{users}','Admin\UserController@usersDelete');
 Route::get('searchuser/{name}',[UserController::class,'search']);
-//oder
+//order
 Route::get('order','Admin\OrderController@order');
 Route::get('order/{id}','Admin\OrderController@orderById');
 Route::put('order/{id}','Admin\OrderController@orderUpdate');
 Route::delete('order/{order}','Admin\OrderController@orderDelete');
-
+Route::get('search-order-admin/{name}',[OrderController::class,'search']);
 // CLIENT
 //home
 Route::get('tranh-gom-client','Client\HomeController@Home_tranh_gom');
@@ -134,6 +136,20 @@ Route::get('search-pro-client/{name}',[HomeController::class,'search']);
 
 //product-detail
 Route::get('chi-tiet-san-pham/{id}','Client\HomeController@Product_detail');
+//order
+Route::get('orders','Client\HomeController@orderlist');
+Route::post('orders','Client\HomeController@CreateOrder');
+
+//introduction on client
+Route::get('client-introduction','Admin\IntroductionController@introduction');
+
+//list-blogand knowleage
+Route::get('news-list','Client\Knowneage_Blog@List_news');
+Route::get('list-ceramics','Client\Knowneage_Blog@List_Knowleage_ceramics');
+//news-detail
+Route::get('news-detail/{id}','Admin\NewsController@newsById');
+// Route::get('search-pro-client/{name}',[HomeController::class,'search']);
+
 
 // Route::group(['middleware'=>'auth:api'],function(){
 //     Route::apiResource('producer','producer');

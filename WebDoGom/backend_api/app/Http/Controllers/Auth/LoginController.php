@@ -16,6 +16,7 @@ class LoginController extends Controller
         $datacheckLogin=[
             'email'=> $request->email,
             'password'=>$request->password,
+            'role_id'=>3,
         ];
         //dd(Auth::attempt($datacheckLogin));
         //Xac thuc user co tai khoan

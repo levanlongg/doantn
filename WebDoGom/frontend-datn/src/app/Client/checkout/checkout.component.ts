@@ -14,12 +14,15 @@ export class CheckoutComponent implements OnInit {
 
   products: any[] = [];
   totalMoney: number;
-  firstName: string = '';
-  lastName: string = '';
-  orderAddress: string = '';
-  orderPhone: string = '';
-  orderEmail: string = '';
-  orderNote: string = '';
+  public checkedid: any;
+  public entity: any;
+  customer_id: string= '';
+  order_name: string = '';
+  order_address: string = '';
+  order_email: string = '';
+  order_phone: string = '';
+  order_note: string = '';
+  payment_status: string = '';
   constructor(
     private cartService: CartService,
     private checkoutService: CheckoutService,
@@ -32,6 +35,12 @@ export class CheckoutComponent implements OnInit {
   }
   createEror() {
     this.toastr.error('Chưa thêm sản phẩm vào giỏ hàng', 'Thông báo!', { timeOut: 2000 });
+  }
+  createSuccess1() {
+    this.toastr.success('Đặt hàng thành công', 'Thông báo!', { timeOut: 2000 });
+  }
+  createEror1() {
+    this.toastr.error('Đặt hàng không thành công , bạn cần đăng ký tài khoản', 'Thông báo!', { timeOut: 2000 });
   }
   updateSuccess() {
     this.toastr.success('Đã cập nhật số lượng sản phẩm trong giỏ hàng', 'Thông báo!');
@@ -86,29 +95,50 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  checkout(): void {
-    var order = {
-      orderName: this.firstName + ' ' + this.lastName,
-      orderAddress: this.orderAddress,
-      orderEmail: this.orderEmail,
-      orderPhone: this.orderPhone,
-      orderNote: this.orderNote,
+  checkout(){
+      var order = {
+      customer_id: this.customer_id,
+      order_name: this.order_name,
+      order_address: this.order_address,
+      order_phone: this.order_phone,
+      order_email: this.order_email,
+      order_note: this.order_note,
+      payment_status: this.payment_status,
       totalMoney: this.totalMoney,
-      orderDetails: JSON.stringify(this.products),
+      orderDetails: this.products,
+      // orderDetails: JSON.stringify(this.products),
     };
-    this.checkoutService
-      .checkout(order)
-      .pipe(first())
-      .subscribe((res) => {
-        //console.log(res);
-        if (res > 0) {
-          this.cartService.clearCart();
-          this.createSuccess();
+    this.checkedid = 0;
+    if (this.checkedid == 0) {
+      this.checkoutService.checkout(order).subscribe((res) => {
+        // console.log(order);
+        if (res) {
+          var result = confirm("Bạn muốn đặt hàng?");
+          if (result == true) {
+            this.cartService.clearCart();
+            this.createSuccess1();
+          }
+          else {
+            this.createEror1();
+          }
           setTimeout(() => {
             this.router.navigateByUrl('/home');
           }, 1000);
         }
       });
+    }
+    // this.checkoutService
+    //   .checkout(order)
+    //   .pipe(first())
+    //   .subscribe((res) => {
+    //     if (res > 0) {
+    //       this.cartService.clearCart();
+    //     }
+    //     setTimeout(() => {
+    //       this.router.navigateByUrl('/home');
+    //     }, 1000);
+    //     this.createSuccess1();
+    //   });
   }
 }
 

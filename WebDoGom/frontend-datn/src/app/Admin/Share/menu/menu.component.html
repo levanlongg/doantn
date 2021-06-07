@@ -14,70 +14,97 @@
             <a href="javascript:;">
             <i class="fa fa-cogs" aria-hidden="true"></i>
             <span class="nav-text">
-                UI Components
+                Sản phẩm
             </span>
             <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
             </a>
             <ul>
                 <li>
-                <a class="subnav-text" href="buttons.html">
-                Buttons
+                <a class="subnav-text" [routerLink]="['/product']" routerLinkActive="router-link-active">
+                Danh sách sản phẩm
                 </a>
                 </li>
                 <li>
-                <a class="subnav-text" href="grids.html">
-                Grids
+                <a class="subnav-text" [routerLink]="['/product-type']" routerLinkActive="router-link-active">
+                Loại sản phẩm
                 </a>
                 </li>
             </ul>
         </li>
         <li class="has-subnav">
             <a href="javascript:;">
-            <i class="fa fa-check-square-o nav_icon"></i>
+            <i class="fa fa-file-text-o nav_icon"></i>
             <span class="nav-text">
-            Forms
+            Tin tức
             </span>
             <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
             </a>
             <ul>
                 <li>
-                    <a class="subnav-text" href="inputs.html">Inputs</a>
+                    <a class="subnav-text" [routerLink]="['/admin-news']" routerLinkActive="router-link-active">Danh sách tin tức</a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="validation.html">Form Validation</a>
+                    <a class="subnav-text" [routerLink]="['/news-type']" routerLinkActive="router-link-active">Loại tin</a>
                 </li>
             </ul>
         </li>
         <li class="has-subnav">
             <a href="javascript:;">
-                <i class="fa fa-file-text-o nav_icon"></i>
-                    <span class="nav-text">Pages</span>
+                <i class="fa fa-check-square-o nav_icon"></i>
+                    <span class="nav-text">Người dùng</span>
                 <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
             </a>
             <ul>
                 <li>
-                    <a class="subnav-text" href="gallery.html">
-                        Image Gallery
+                    <a class="subnav-text" [routerLink]="['/admin-user']" routerLinkActive="router-link-active">
+                        Danh sách
                     </a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="calendar.html">
-                        Calendar
+                    <a class="subnav-text" [routerLink]="['/role-master']" routerLinkActive="router-link-active">
+                        Quyền người dùng
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-subnav">
+            <a href="javascript:;">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+                    <span class="nav-text">Các tác vụ khác</span>
+                <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+            </a>
+            <ul>
+                <li>
+                    <a class="subnav-text" [routerLink]="['/category']" routerLinkActive="router-link-active">
+                        Danh mục
                     </a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="signup.html">
-                        Sign Up Page
+                    <a class="subnav-text" [routerLink]="['/contact']" routerLinkActive="router-link-active">
+                        Liên hệ
                     </a>
                 </li>
                 <li>
-                    <a class="subnav-text" href="login.html">
-                        Login Page
+                    <a class="subnav-text" [routerLink]="['/producer']" routerLinkActive="router-link-active">
+                        Nhà sản xuất
+                    </a>
+                </li>
+                <li>
+                    <a class="subnav-text" [routerLink]="['/introduction']" routerLinkActive="router-link-active">
+                        Giới thiệu
                     </a>
                 </li>
             </ul>
         </li>
         <li>
+            <a [routerLink]="['/admin-order']" routerLinkActive="router-link-active">
+                <i class="icon-table nav-icon"></i>
+                <span class="nav-text">
+                 Đơn hàng
+                </span>
+            </a>
+        </li>
+        <!-- <li>
             <a href="charts.html">
                 <i class="fa fa-bar-chart nav_icon"></i>
                 <span class="nav-text">
@@ -131,11 +158,11 @@
                     <a class="subnav-text" href="blank.html">Blank Page</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
     </ul>
     <ul class="logout">
         <li>
-        <a href="login.html">
+        <a (click)="logout()">
         <i class="icon-off nav-icon"></i>
         <span class="nav-text">
         Logout

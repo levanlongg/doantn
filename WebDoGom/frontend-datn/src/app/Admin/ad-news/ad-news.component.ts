@@ -36,6 +36,7 @@ export class AdNewsComponent implements OnInit {
 
     this.newstype.getListnewtype().subscribe((res: any) => {
       this.listnewstype = res;
+      
     });
   }
   createSuccess() {

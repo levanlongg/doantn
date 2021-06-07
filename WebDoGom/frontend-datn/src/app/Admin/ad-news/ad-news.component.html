@@ -219,8 +219,8 @@
                                     <tr
                                         *ngFor="let item of items | paginate: { itemsPerPage: 5, currentPage: p }; let i=index;">
                                         <td style="text-align: center;">{{i+1}}</td>
-                                        <td style="text-align: center;">{{item.title}}</td>
-                                        <td style="text-align: center;">{{item.description}}</td>
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.description}}</td>
                                         <td style="text-align: center;">
                                             <button style="margin-left: 1%;" type="button" class="btn btn-success" (click)="showView(item.id)"><i class="glyphicon glyphicon-eye-open"></i></button>
                                             <button style="margin-left: 1%;" type="button" class="btn btn-success"><i
@@ -281,7 +281,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Mô tả:</label>
-                                    <textarea class="form-control" value="" name="description"
+                                    <textarea style="height:250px" class="form-control" value="" name="description"
                                         [(ngModel)]="entity.description" required #description="ngModel"></textarea>
                                     <div *ngIf="description.invalid && (description.dirty || description.touched)"
                                         class="label label-danger">
@@ -290,7 +290,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Nội dung:</label>
-                                    <textarea class="form-control" value="" name="content"
+                                    <textarea style="height:300px" class="form-control" value="" name="content"
                                         [(ngModel)]="entity.content" required #content="ngModel"></textarea>
                                     <div *ngIf="content.invalid && (content.dirty || content.touched)"
                                         class="label label-danger">
@@ -384,7 +384,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Mô tả:</label>
-                                    <textarea class="form-control" value="" name="description"
+                                    <textarea style="height:250px" class="form-control" value="" name="description"
                                         [(ngModel)]="entity.description" required #description="ngModel"></textarea>
                                     <div *ngIf="description.invalid && (description.dirty || description.touched)"
                                         class="label label-danger">
@@ -393,7 +393,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Nội dung:</label>
-                                    <textarea class="form-control" value="" name="content"
+                                    <textarea style="height:300px" class="form-control" value="" name="content"
                                         [(ngModel)]="entity.content" required #content="ngModel"></textarea>
                                     <div *ngIf="content.invalid && (content.dirty || content.touched)"
                                         class="label label-danger">
@@ -402,7 +402,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Hình ảnh:</label>
-                                    <input type="file" class="form-control" value="" name="image"
+                                    <input type="text" class="form-control" value="" name="image"
                                         [(ngModel)]="entity.image" required #image="ngModel">
                                     <div *ngIf="image.invalid && (image.dirty || image.touched)"
                                         class="label label-danger">
@@ -485,7 +485,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Mô tả:</label>
-                                    <textarea class="form-control" value="" name="description"
+                                    <textarea style="height:250px" class="form-control" value="" name="description"
                                         [(ngModel)]="entity.description" required #description="ngModel"></textarea>
                                     <div *ngIf="description.invalid && (description.dirty || description.touched)"
                                         class="label label-danger">
@@ -494,7 +494,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Nội dung:</label>
-                                    <textarea class="form-control" value="" name="content"
+                                    <textarea style="height:300px" class="form-control" value="" name="content"
                                         [(ngModel)]="entity.content" required #content="ngModel"></textarea>
                                     <div *ngIf="content.invalid && (content.dirty || content.touched)"
                                         class="label label-danger">

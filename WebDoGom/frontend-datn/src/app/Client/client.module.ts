@@ -28,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
+import { PolicyComponent } from './policy/policy.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 // import { ProductModule } from './product/product.module'
 
 // const routes: Routes = [
@@ -39,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [HomeComponent, ContentComponent, FooterComponent, HeaderComponent, LeftHomeComponent, NewsletterComponent, OtherProductComponent, RightHomeComponent, SlideHomeComponent, BlogComponent,
   CheckoutComponent, ContactComponent, IntroductionComponent, KnowledgeCeramicsComponent, PaymentComponent, PaymentAtmComponent, PaymentCreditComponent, PaymentPaypalComponent, ServicesComponent,
-  ListProductComponent, ProductDetailComponent,
+  ListProductComponent, ProductDetailComponent, PolicyComponent, BlogDetailComponent, 
    ],
   imports: [
     CommonModule,
@@ -63,6 +65,10 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path: 'product-detail-client/:id',
         component: ProductDetailComponent,
+      },
+      {
+        path: 'blog-detail/:id',
+        component: BlogDetailComponent,
       },
       {
         path: 'client-blog',
@@ -103,6 +109,10 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path: 'services-client',
         component: ServicesComponent,
+      },
+      {
+        path: 'policy',
+        component: PolicyComponent,
       },
     ]),
   ]

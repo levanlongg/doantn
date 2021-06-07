@@ -3,15 +3,27 @@
         <div class="wrapper-1">
             <div class="form-inner-cont">
                 <h3>Đăng nhập</h3>
-                <form action="#" method="post" class="signin-form">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signin-form">
                     <div class="form-input">
-                        <span class="fa fa-envelope-o" aria-hidden="true"></span> <input type="email" name="email"
-                            placeholder="Email" required />
+                        <span class="fa fa-envelope-o" aria-hidden="true"></span> 
+                        <input type="email" id="email" formControlName="email" placeholder="Email" required />
+                    </div>
+                    <div *ngIf="iSubmited && form.controls.email.errors">
+                        <span class="text-danger" *ngIf="form.controls.email.errors.required">Chưa nhập email.</span>
+                        <span class="text-danger" *ngIf="form.controls.email.errors.email">Email không đúng định dạng.</span>
+                        <span class="text-danger" *ngIf="form.controls.email.errors.minlength">Email không được nhỏ hơn 8 ký tự.</span>
+                        <span class="text-danger" *ngIf="form.controls.email.errors.maxlength">Email không được lớn hơn 50 ký tự.</span>
                     </div>
                     <div class="form-input">
-                        <span class="fa fa-key" aria-hidden="true"></span> <input type="password" name="password" placeholder="Mật khẩu"
-                            required />
+                        <span class="fa fa-key" aria-hidden="true"></span>
+                        <input type="password" placeholder="Mật khẩu"  id="password" formControlName="password" required />
                     </div>
+                    <div *ngIf="iSubmited && form.controls.password.errors">
+                        <div class="text-danger" *ngIf="form.controls.password.errors.required">Chưa nhập mật khẩu.</div>
+                        <div class="text-danger" *ngIf="form.controls.password.errors.minlength">Mật khẩu không được dưới 8 ký tự.</div>
+                        <div class="text-danger" *ngIf="form.controls.password.errors.maxlength">Mật khẩu không được trên 50 ký tự.</div>
+                        <div class="text-danger" *ngIf="form.controls.password.errors.pattern">Mật khẩu không đúng định dạng.</div>
+                      </div>
                     <div class="login-remember d-grid">
                         <label class="check-remaind">
                             <input type="checkbox">

@@ -1,0 +1,241 @@
+<!-- top-header -->
+<section style="margin-left: -4.4%;" class="wrapper scrollable">
+    <app-header></app-header>
+    
+    <div class="page-head_agile_info_w3l">
+
+	</div>
+	<!-- //banner-2 -->
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short">
+					<li>
+						<a>Home</a>
+						<i>|</i>
+					</li>
+					<li>Chính sách</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //page -->
+	<!-- about page -->
+	<!-- welcome -->
+	<div class="welcome">
+		<div class="container">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l">Chính sách của chúng tôi
+				<span class="heading-style">
+					<i></i>
+					<i></i>
+					<i></i>
+				</span>
+			</h3>
+			<!-- //tittle heading -->
+			<div class="w3l-welcome-info">
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/about.jpg" class="img-responsive zoom-img" alt="">
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/about2.jpg" class="img-responsive zoom-img" alt="">
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="w3l-welcome-text">
+                <p style="color: red; font-size: 30px;">I. Chính sách giao hàng</p>
+                <p style="color: black;">
+                    <b>1.1 Giao hàng khu vực nội thành Hà Nội<br/></b>
+                    MIỄN PHÍ VẬN CHUYỂN trong phạm vi khoảng cách 5km với đơn hàng giá trị từ 2.000.000 VNĐ trở lên.<br/>
+                    Hàng được giao tận nhà quý khách trong vòng 3-4 tiếng đồng hồ kể từ khi xác nhận đơn hàng.<br/>
+                    <b>1.2 Giao hàng ngoại thành Hà Nội<br/></b>
+                    Khu vực ngoại thành Hà Nội, khách hàng chịu chi phí vận chuyển áp dụng theo chính sách giao hàng toàn quốc thông qua các đối tác vận chuyển như Viettel Post, Netco, EMS, TT Express <br/>
+                    <b> 1.3 Chính sách giao hàng toàn quốc<br/></b>
+                    Chuyển hàng qua các công ty chuyển phát nhanh, bưu điện<br/>
+                    Gốm sứ Bát Tràng thực hiện việc chuyển hàng tới quý khách thông qua các đối tác vận chuyển như Viettel Post, Netco, EMS, TT Express…với mức phí áp dụng của các đối tác đó. <br/>
+                    Ví dụ: Bảng giá vận chuyển tham khảo của Viettel Post <br/>
+                    – Thờ gian vận chuyển từ 2-7 ngày làm việc của các đối tác vận chuyển, tùy theo từng khu vực. <br/>
+                      Chuyển hàng theo xe <br/>
+                    Gốm sứ Bát Tràng vận chuyển hàng ra bến xe theo chính sách vận chuyển nội thành Hà Nội khi được khách hàng yêu cầu. Quý khách tự liên hệ nhận hàng và thanh toán phí vận chuyển trực tiếp với nhà xe. <br/>
+                </p>
+                <p style="color: red; font-size: 30px;">II. Chính sách đổi trả hàng</p>
+                <p style="color: black;">Khách hàng được mở hàng kiểm tra trước khi trả tiền, trong quá trình kiểm tra hàng nếu có lỗi khách hàng có quyền từ chối không nhận sản phẩm trong các trường hợp sau:<br/>
+                    Lỗi của nhà sản xuất hoặc bị sứt mẻ do quá trình vận chuyển<br/>
+                    Sản phẩm không giống hình ảnh trên website<br/>
+                    Sản phẩm không ưng ý theo nhu cầu sử dụng của mình: Được đổi hàng. (Quý khách vui lòng thanh toán phí vận chuyển – Không áp dụng đổi, trả với những sản phẩm đã in logo)</p>
+			</div>
+		</div>
+	</div>
+	<!-- //welcome -->
+
+    <!-- newsletter -->
+    <app-newsletter></app-newsletter>
+    <!-- //newsletter -->
+    <!-- footer -->
+    <app-footer></app-footer>
+</section>
+<!-- //copyright -->
+
+<!-- js-files -->
+<!-- jquery -->
+<!-- <script src="../assets/Client/js/jquery-2.1.4.min.js"></script> -->
+<!-- //jquery -->
+
+<!-- popup modal (for signin & signup)-->
+<!-- <script src="js/jquery.magnific-popup.js"></script> -->
+<!-- <script>
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+    });
+</script> -->
+<!-- Large modal -->
+<!-- <script>
+    $('#').modal('show');
+</script> -->
+<!-- //popup modal (for signin & signup)-->
+
+<!-- cart-js -->
+<script src="./assets/Client/js/minicart.js"></script>
+<script>
+    paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+    paypalm.minicartk.cart.on('checkout', function (evt) {
+        var items = this.items(),
+            len = items.length,
+            total = 0,
+            i;
+
+        // Count the number of each item in the cart
+        for (i = 0; i < len; i++) {
+            total += items[i].get('quantity');
+        }
+
+        if (total < 3) {
+            alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            evt.preventDefault();
+        }
+    });
+</script>
+<!-- //cart-js -->
+
+<!-- price range (top products) -->
+<!-- <script src="js/jquery-ui.js"></script> -->
+<!-- <script>
+    $(window).load(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 9000,
+            values: [50, 6000],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+    }); 
+</script> -->
+<!-- //price range (top products) -->
+
+<!-- flexisel (for special offers) -->
+<!-- <script src="js/jquery.flexisel.js"></script>
+<script>
+    $(window).load(function () {
+        $("#flexiselDemo1").flexisel({
+            visibleItems: 3,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 2
+                }
+            }
+        });
+
+    });
+</script> -->
+<!-- //flexisel (for special offers) -->
+
+<!-- password-script -->
+<!-- <script>
+    window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+    }
+
+    function validatePassword() {
+        var pass2 = document.getElementById("password2").value;
+        var pass1 = document.getElementById("password1").value;
+        if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("password2").setCustomValidity('');
+        //empty string means no validation error
+    }
+</script> -->
+<!-- //password-script -->
+
+<!-- smoothscroll -->
+<!-- <script src="js/SmoothScroll.min.js"></script> -->
+<!-- //smoothscroll -->
+
+<!-- start-smooth-scrolling -->
+<!-- <script src="js/move-top.js"></script>
+<script src="js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script> -->
+<!-- //end-smooth-scrolling -->
+
+<!-- smooth-scrolling-of-move-up -->
+<!-- <script>
+    $(document).ready(function () {
+       
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script> -->
+<!-- //smooth-scrolling-of-move-up -->
+
+<!-- for bootstrap working -->
+<!-- <script src="js/bootstrap.js"></script> -->
+<!-- //for bootstrap working -->
+<!-- //js-files -->

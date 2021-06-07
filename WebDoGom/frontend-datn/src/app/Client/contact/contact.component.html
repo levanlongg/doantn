@@ -37,21 +37,24 @@
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
-						<form action="#" method="post">
+						<!-- <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.values)"> -->
 							<div class="">
-								<input type="text" name="name" placeholder="Họ tên" required="">
+								<input type="text" name="create_by" placeholder="Họ tên" [(ngModel)]="create_by">
 							</div>
 							<div class="">
-								<input class="text" type="text" name="subject" placeholder="Chủ đề" required="">
+								<input class="text" type="text" name="subject" placeholder="Chủ đề" [(ngModel)]="subject">
 							</div>
 							<div class="">
-								<input class="email" type="email" name="email" placeholder="Email" required="">
+								<input class="email" type="text" name="email" placeholder="Email" [(ngModel)]="email">
 							</div>
 							<div class="">
-								<textarea placeholder="Message" name="message" required=""></textarea>
+								<textarea placeholder="Nội dung phản ánh" name="message" [(ngModel)]="message"></textarea>
 							</div>
-							<input type="submit" value="Gửi tin">
-						</form>
+                            <div class="">
+								<textarea placeholder="Ý kiến đóng góp" name="message1" [(ngModel)]="message1"></textarea>
+							</div>
+							<button class="btn btn-success" (click)="contact()">Gửi tin</button>
+						<!-- </form> -->
 					</div>
 					<div class="contact-right wthree">
 						<div class="col-xs-7 contact-text w3-agileits">

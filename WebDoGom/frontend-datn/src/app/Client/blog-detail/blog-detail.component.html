@@ -1,0 +1,90 @@
+
+<section style="margin-left: -4.4%;" class="wrapper scrollable">
+    <app-header></app-header>
+
+    <div class="page-head_agile_info_w3l">
+
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a>Home</a>
+                        <i>|</i>
+                    </li>
+                    <li>Tin chi tiết</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //page -->
+    <!-- about page -->
+    <!-- welcome -->
+    <div class="welcome">
+        <div class="container">
+            <!-- tittle heading -->
+            <h3 class="tittle-w3l">Chi tiết
+                <span class="heading-style">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+            </h3>
+            <!-- //tittle heading -->
+            <div class="w3l-welcome-info">
+                <div class="col-sm-6 col-xs-6 welcome-grids">
+                    <div class="welcome-img">
+                        <img src="images/about.jpg" class="img-responsive zoom-img" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-6 welcome-grids">
+                    <div class="welcome-img">
+                        <img src="images/about2.jpg" class="img-responsive zoom-img" alt="">
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="w3l-welcome-text">
+                <p style="color: red; font-size: 20px;">{{news_client.title}}</p>
+                <div style="text-align: center;">
+                    <img src="../assets/Client/blogimage/{{news_client.image}}" alt="" style="height:300px; width: 500;">
+                </div>
+                <p style="color: black">{{news_client.content}}</p>
+            </div>
+        </div>
+    </div>
+    <!-- //welcome -->
+
+    <!-- newsletter -->
+    <app-newsletter></app-newsletter>
+    <!-- //newsletter -->
+    <!-- footer -->
+    <app-footer></app-footer>
+</section>
+
+<!-- cart-js -->
+<script src="./assets/Client/js/minicart.js"></script>
+<script>
+    paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+    paypalm.minicartk.cart.on('checkout', function (evt) {
+        var items = this.items(),
+            len = items.length,
+            total = 0,
+            i;
+
+        // Count the number of each item in the cart
+        for (i = 0; i < len; i++) {
+            total += items[i].get('quantity');
+        }
+
+        if (total < 3) {
+            alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            evt.preventDefault();
+        }
+    });
+</script>
+<!-- <p>{{news_client.title}}</p> -->

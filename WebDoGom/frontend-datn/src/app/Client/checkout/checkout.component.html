@@ -1,7 +1,7 @@
 <!-- top-header -->
 <section style="margin-left: -4.4%;" class="wrapper scrollable">
-    <app-header></app-header>
-    <!-- banner-2 -->
+	<app-header></app-header>
+	<!-- banner-2 -->
 	<div class="page-head_agile_info_w3l">
 
 	</div>
@@ -33,261 +33,275 @@
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<div class="checkout-right">
-				
-				<div class="table-responsive">
-					<table class="timetable_sub">
-						<thead>
-							<tr>
-								<th>Hình ảnh</th>
-								<th>Số lượng</th>
-								<th>Tên sản phẩm</th>
-								<th>Giá bán</th>
-								<th>Thành tiền</th>
-								<th>Tác vụ</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="rem1" *ngFor="let product of products">
-								<td class="invert-image">
-									<a href="single2.html">
-										<img src="../assets/Client/hinh_anh_sp/{{product.image}}" alt=" " class="img-responsive" style="height: 70px; width: 70px;">
-									</a>
-								</td>
-								<td class="invert">
-									<input #quantity type="number" name="qtybutton" 
-                                    value="{{product.quantity}}" min="1">
-								</td>
-								<td class="invert">{{ product.name}}</td>
-								<td class="invert">{{ product.price | currency : "VND" : true}}</td>
-								<td class="invert">{{ product.quantity * product.price | currency : "VND"}}</td>
-								<td class="invert">
-									<button style="margin-left: 2%;" (click)="updateProduct(product.id, quantity.value)" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-									<button style="margin-left: 2%;" (click)="deleteProduct(product.id)" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
-								</td>
-							</tr>
-							<tr class="rem1">
-								<td class="invert" colspan="6">
-									<p style="float: right; color: red;">Tổng tiền: {{totalMoney | currency : 'VND' : true}}</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="checkout-left">
-				<div class="address_form_agile">
-					<h4>Add a new Details</h4>
-					<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
-						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
-							<div class="information-wrapper">
-								<div class="first-row">
-									<div class="controls">
-										<input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="">
-									</div>
-									<div class="w3_agileits_card_number_grids">
-										<div class="w3_agileits_card_number_grid_left">
-											<div class="controls">
-												<input type="text" placeholder="Mobile Number" name="number" required="">
-											</div>
-										</div>
-										<div class="w3_agileits_card_number_grid_right">
-											<div class="controls">
-												<input type="text" placeholder="Landmark" name="landmark" required="">
-											</div>
-										</div>
-										<div class="clear"> </div>
-									</div>
-									<div class="controls">
-										<input type="text" placeholder="Town/City" name="city" required="">
-									</div>
-									<div class="controls">
-										<select class="option-w3ls">
-											<option>Select Address type</option>
-											<option>Office</option>
-											<option>Home</option>
-											<option>Commercial</option>
-
-										</select>
-									</div>
-								</div>
-								<button class="submit check_out">Đặt hàng</button>
-							</div>
-						</div>
-					</form>
-					<div class="checkout-right-basket">
-						<a href="payment.html">Thanh toán online
-							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
-						</a>
+				<div class="checkout-right">
+					<div class="table-responsive">
+						<table class="timetable_sub">
+							<thead>
+								<tr>
+									<th>Hình ảnh</th>
+									<th>Số lượng</th>
+									<th>Tên sản phẩm</th>
+									<th>Giá bán</th>
+									<th>Thành tiền</th>
+									<th>Tác vụ</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="rem1" *ngFor="let product of products">
+									<td class="invert-image">
+										<a href="single2.html">
+											<img src="../assets/Client/hinh_anh_sp/{{product.image}}" alt=" "
+												class="img-responsive" style="height: 70px; width: 70px;">
+										</a>
+									</td>
+									<td class="invert">
+										<input #quantity type="number" name="qtybutton" value="{{product.quantity}}"
+											min="1">
+									</td>
+									<td class="invert">{{product.name}}</td>
+									<td class="invert">{{product.price | currency : "VND" : true}}</td>
+									<td class="invert">{{product.quantity * product.price | currency : "VND"}}</td>
+									<td class="invert">
+										<button style="margin-left: 2%;"
+											(click)="updateProduct(product.id, quantity.value)"
+											class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
+										<button style="margin-left: 2%;" (click)="deleteProduct(product.id)"
+											class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+									</td>
+								</tr>
+								<tr class="rem1">
+									<td class="invert" colspan="6">
+										<p style="float: right; color: red;">Tổng tiền: {{totalMoney | currency : 'VND'
+											: true}}</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
+				<div class="checkout-left">
+					<div class="address_form_agile">
+						<h4>Thông tin đơn hàng</h4>
+						<div class="creditly-card-form agileinfo_form">
+							<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+								<!-- <form #PostForm="ngForm" (ngSubmit)="checkout(PostForm.order)"> -->
+								<div class="information-wrapper">
+									<div class="first-row" style="color: black;">
+										<div class="controls">
+											<input class="billing-address-name" type="text" name="order_name"
+												placeholder="Tên người nhận hàng" required="" [(ngModel)]="order_name">
+										</div>
+										<div class="controls">
+											<input class="billing-address-name" type="text" name="order_address"
+												placeholder="Địa chỉ giao hàng" required="" [(ngModel)]="order_address">
+										</div>
+										<div class="controls">
+											<input type="text" placeholder="Số điện thoại người nhận" name="order_phone"
+												required="" [(ngModel)]="order_phone">
+										</div>
+										<div class="controls">
+											<input type="text" placeholder="Email" name="order_email"
+												required="" [(ngModel)]="order_email">
+										</div>
+					
+										<div class="controls">
+											<input type="text" placeholder="Ghi chú" name="order_note"
+												required="" [(ngModel)]="order_note">
+										</div>
+										<div class="controls">
+												<select name="payment_status" [(ngModel)]="payment_status">
+													<option value="0">Chưa trả tiên</option>
+												</select>
+										</div>
+										<div class="controls">
+											<input type="number" name="totalMoney"
+												required="" [(ngModel)]="totalMoney">
+										</div>
+										<!-- <div class="controls">
+											<input type="text" name="orderDetails"
+												required="" [(ngModel)]="products">
+										</div> -->
+								
+									</div>
+									<button class="submit check_out" (click)="checkout()">Đặt hàng</button>
+								</div>
+								<!-- </form> -->
+							</div>
+						</div>
+					
+						<div class="checkout-right-basket">
+							<a href="payment.html">Thanh toán online
+								<span class="fa fa-hand-o-right" aria-hidden="true"></span>
+							</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
 		</div>
 	</div>
-	
-    <app-newsletter></app-newsletter>
-    <!-- //newsletter -->
-    <!-- footer -->
-    <app-footer></app-footer>
+
+	<app-newsletter></app-newsletter>
+	<!-- //newsletter -->
+	<!-- footer -->
+	<app-footer></app-footer>
 </section>
 <!-- //copyright -->
 
 <!-- js-files -->
-	<!-- jquery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
+<!-- jquery -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- //jquery -->
 
-	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('.popup-with-zoom-anim').magnificPopup({
-				type: 'inline',
-				fixedContentPos: false,
-				fixedBgPos: true,
-				overflowY: 'auto',
-				closeBtnInside: true,
-				preloader: false,
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});
-
+<!-- popup modal (for signin & signup)-->
+<script src="js/jquery.magnific-popup.js"></script>
+<script>
+	$(document).ready(function () {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
 		});
-	</script>
-	<!-- Large modal -->
-	<!-- <script>
+
+	});
+</script>
+<!-- Large modal -->
+<!-- <script>
 		$('#').modal('show');
 	</script> -->
-	<!-- //popup modal (for signin & signup)-->
+<!-- //popup modal (for signin & signup)-->
 
-	<!-- cart-js -->
-	<script src="../assets/Client/js/minicart.js"></script>
-	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
+<!-- cart-js -->
+<script src="../assets/Client/js/minicart.js"></script>
+<script>
+	paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
+	paypalm.minicartk.cart.on('checkout', function (evt) {
+		var items = this.items(),
+			len = items.length,
+			total = 0,
+			i;
 
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
-	<!-- //cart-js -->
-
-	<!--quantity-->
-	<script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
-
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-		});
-	</script>
-	<!--quantity-->
-	<script>
-		$(document).ready(function (c) {
-			$('.close1').on('click', function (c) {
-				$('.rem1').fadeOut('slow', function (c) {
-					$('.rem1').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close2').on('click', function (c) {
-				$('.rem2').fadeOut('slow', function (c) {
-					$('.rem2').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close3').on('click', function (c) {
-				$('.rem3').fadeOut('slow', function (c) {
-					$('.rem3').remove();
-				});
-			});
-		});
-	</script>
-	<!--//quantity-->
-
-	<!-- password-script -->
-	<script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
+		// Count the number of each item in the cart
+		for (i = 0; i < len; i++) {
+			total += items[i].get('quantity');
 		}
 
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
+		if (total < 3) {
+			alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			evt.preventDefault();
 		}
-	</script>
-	<!-- //password-script -->
+	});
+</script>
+<!-- //cart-js -->
 
-	<!-- smoothscroll -->
-	<!-- //smoothscroll -->
+<!--quantity-->
+<script>
+	$('.value-plus').on('click', function () {
+		var divUpd = $(this).parent().find('.value'),
+			newVal = parseInt(divUpd.text(), 10) + 1;
+		divUpd.text(newVal);
+	});
 
-	<!-- start-smooth-scrolling -->
-	<script src="../assets/Client/js/move-top.js"></script>
-	<script src="../assets/Client/js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
+	$('.value-minus').on('click', function () {
+		var divUpd = $(this).parent().find('.value'),
+			newVal = parseInt(divUpd.text(), 10) - 1;
+		if (newVal >= 1) divUpd.text(newVal);
+	});
+</script>
+<!--quantity-->
+<script>
+	$(document).ready(function (c) {
+		$('.close1').on('click', function (c) {
+			$('.rem1').fadeOut('slow', function (c) {
+				$('.rem1').remove();
 			});
 		});
-	</script>
-	<!-- //end-smooth-scrolling -->
-
-	<!-- smooth-scrolling-of-move-up -->
-	<script>
-		$(document).ready(function () {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
-			$().UItoTop({
-				easingType: 'easeOutQuart'
+	});
+</script>
+<script>
+	$(document).ready(function (c) {
+		$('.close2').on('click', function (c) {
+			$('.rem2').fadeOut('slow', function (c) {
+				$('.rem2').remove();
 			});
-
 		});
-	</script>
-	<!-- //smooth-scrolling-of-move-up -->
+	});
+</script>
+<script>
+	$(document).ready(function (c) {
+		$('.close3').on('click', function (c) {
+			$('.rem3').fadeOut('slow', function (c) {
+				$('.rem3').remove();
+			});
+		});
+	});
+</script>
+<!--//quantity-->
 
-	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-	<!-- //for bootstrap working -->
-	<!-- //js-files -->
+<!-- password-script -->
+<script>
+	window.onload = function () {
+		document.getElementById("password1").onchange = validatePassword;
+		document.getElementById("password2").onchange = validatePassword;
+	}
+
+	function validatePassword() {
+		var pass2 = document.getElementById("password2").value;
+		var pass1 = document.getElementById("password1").value;
+		if (pass1 != pass2)
+			document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+		else
+			document.getElementById("password2").setCustomValidity('');
+		//empty string means no validation error
+	}
+</script>
+<!-- //password-script -->
+
+<!-- smoothscroll -->
+<!-- //smoothscroll -->
+
+<!-- start-smooth-scrolling -->
+<script src="../assets/Client/js/move-top.js"></script>
+<script src="../assets/Client/js/easing.js"></script>
+<script>
+	jQuery(document).ready(function ($) {
+		$(".scroll").click(function (event) {
+			event.preventDefault();
+
+			$('html,body').animate({
+				scrollTop: $(this.hash).offset().top
+			}, 1000);
+		});
+	});
+</script>
+<!-- //end-smooth-scrolling -->
+
+<!-- smooth-scrolling-of-move-up -->
+<script>
+	$(document).ready(function () {
+		/*
+		var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+		};
+		*/
+		$().UItoTop({
+			easingType: 'easeOutQuart'
+		});
+
+	});
+</script>
+<!-- //smooth-scrolling-of-move-up -->
+
+<!-- for bootstrap working -->
+<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- //js-files -->

@@ -5,6 +5,7 @@ import { first, map, switchMap } from 'rxjs/operators';
 import { ProductListService } from '../Client-service/product-list.service';
 import { CartService } from '../Client-service/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../Client-service/auth.service';
 
 @Component({
   selector: 'app-list-product',
@@ -15,9 +16,7 @@ export class ListProductComponent implements OnInit {
 
   [x: string]: any;
   @ViewChild('Create', { static: false }) Create: ModalDirective;
-  @ViewChild('Update', { static: false }) Update: ModalDirective;
-  @ViewChild('View', { static: false }) View: ModalDirective;
-
+ 
   public product: any[];
   public entity: any;
   public id: string;
@@ -31,6 +30,7 @@ export class ListProductComponent implements OnInit {
     private productService: ProductListService,
     private toastr: ToastrService,
     private readonly cartService: CartService,
+    private auth:AuthService
     
   ) { }
   ngOnInit(): void {
@@ -42,6 +42,13 @@ export class ListProductComponent implements OnInit {
     this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!', { timeOut: 2000 });
   }
   
+  createSuccess1() {
+    this.toastr.success('Đăng ký thành công', 'Thông báo!');
+  }
+
+  createEror1() {
+    this.toastr.error('Đăng ký không thành công', 'Thông báo!');
+  }
 
   loadDataProduct() {
     this.productService.getlistproduct().subscribe((res: any) => {
@@ -70,5 +77,26 @@ export class ListProductComponent implements OnInit {
     this.createSuccess();
   }
 
-  
+  showCreate() {
+    this.entity = {};
+    this.checkedid = 0;
+    this.Create.show();
+  }
+
+  SaveForm(values: any) {
+    if (this.checkedid == 0) {
+      this.auth.postItemUser(values).subscribe((res) => {
+        if (res) {
+          var result = confirm("Bạn muốn đăng ký?");
+          if (result == true) {
+            this.Create.hide();
+            this.createSuccess1();
+          }
+          else {
+            this.createEror1();
+          }
+        }
+      });
+    }
+  }
 }

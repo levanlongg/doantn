@@ -28,10 +28,10 @@ class ContactController extends Controller
     public function contactSave(Request $request)
     {
         $rules = [
-            'address'=>'required',
-            'phone'=>'required',
+            'subject'=>'required',
+            'message'=>'required',
             'email'=>'required',
-            'website'=>'required',
+            'message1'=>'required',
             'create_by'=>'required',
         ];
         $validator= Validator::make($request->all(),$rules);

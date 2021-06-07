@@ -4,7 +4,6 @@
 		<p>Gốm Sứ Bát Tràng - Tinh Hoa Gốm Sứ Việt</p>
 	</div>
 	<!-- //top-header -->
-	<!-- header-bot-->
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
@@ -33,20 +32,20 @@
 						<span class="fa fa-phone" aria-hidden="true"></span> 0987654321
 					</li>
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
+						<a href="#" data-toggle="modal">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập </a>
 					</li>
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký </a>
+						<a data-toggle="modal" (click)="showCreate()">
+						<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký </a>
 					</li>
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search2">
 					<form action="#" method="post">
-						<input [(ngModel)]="keyword" name="keyword" type="search" placeholder="Chúng tôi có thể giúp gì cho bạn?" required="">
-						<button (click)="Search()" class="btn2 btn-default" aria-label="Left Align">
+						<input name="Search" type="search" placeholder="Chúng tôi có thể giúp gì cho bạn?" required="">
+						<button type="submit" class="btn2 btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
 					</form>
@@ -55,15 +54,14 @@
 				<!-- cart details -->
 				<div class="top_nav_right2">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-						<a [routerLink]="['/client-checkout']"routerLinkActive="router-link-active">
 						<form class="last">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="display" value="1">
+							<a [routerLink]="['/client-checkout']"routerLinkActive="router-link-active">
 							<button class="w3view-cart1" type="submit" name="submit" value="">
 								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-							</button>
+							</button></a>
 						</form>
-					    </a>
 					</div>
 				</div>
 				<!-- //cart details -->
@@ -73,6 +71,7 @@
 		</div>
 	</div>
 	<!-- shop locator (popup) -->
+	<!-- signin Model -->
 	<!-- Modal1 -->
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
@@ -113,50 +112,104 @@
 	<!-- //signin Model -->
 	<!-- signup Model -->
 	<!-- Modal2 -->
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+	<div bsModal #Create="bs-modal" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
-			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body modal-body-sub_agile">
-					<div class="main-mailposi">
-						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+				<form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
+					<div class="modal-header">
+						<h4 id="dialog-sizes-name1" class="modal-title pull-left">Đăng ký</h4>
+						<button type="button" class="close pull-right" (click)="Create.hide()"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
-					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign Up</h3>
-						<p>
-							Come join the Grocery Shoppy! Let's set up your Account.
-						</p>
-						<form action="#" method="post">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="Name" required="">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-6">
+								<label for="name">Tên người dùng:</label>
+								<input type="text" class="form-control" value="" name="name"
+									[(ngModel)]="entity.name" required #name="ngModel">
+								<div *ngIf="name.invalid && (name.dirty || name.touched)"
+									class="label label-danger">
+									Tên người dùng không được để trống
+								</div>
 							</div>
-							<div class="styled-input">
-								<input type="email" placeholder="E-mail" name="Email" required="">
+							<div class="col-md-6">
+								<label for="name">So dien thoai:</label>
+								<input type="text" class="form-control" value="" name="phone"
+									[(ngModel)]="entity.phone" required #phone="ngModel">
+								<div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+									class="label label-danger">
+									Số điện thoại không được để trống
+								</div>
 							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" id="password1"
-									required="">
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-6">
+									<label for="name">Dia chi:</label>
+									<input type="text" class="form-control" value="" name="address"
+										[(ngModel)]="entity.address" required #address="ngModel">
+									<div *ngIf="address.invalid && (address.dirty || address.touched)"
+										class="label label-danger">
+										Địa chỉ không được để trống
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label for="name">Mat khau:</label>
+									<input type="password" class="form-control" value="" name="password"
+										[(ngModel)]="entity.password" required #password="ngModel">
+									<div *ngIf="password.invalid && (password.dirty || password.touched)"
+										class="label label-danger">
+										Mật khẩu không được để trống
+									</div>
+								</div>
 							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Confirm Password" name="Confirm Password"
-									id="password2" required="">
+
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-6">
+									<label for="name"> Quyền:</label>
+									<select name="role_id" [(ngModel)]="entity.role_id" class="form-control" required #role_id="ngModel">
+										<option value="9">Quyền người dùng</option>
+									</select>
+									<div *ngIf="role_id.invalid && (role_id.dirty || role_id.touched)"
+										class="label label-danger">
+										Tên quyền người dùng không được để trống
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label for="name">Email:</label>
+									<input type="text" class="form-control" value="" name="email"
+										[(ngModel)]="entity.email" required #email="ngModel">
+									<div *ngIf="email.invalid && (email.dirty || email.touched)"
+										class="label label-danger">
+										Email không được để trống
+									</div>
+								</div>
 							</div>
-							<input type="submit" value="Sign Up">
-						</form>
-						<p>
-							<a href="#">By clicking register, I agree to your terms</a>
-						</p>
+						</div>
+						<div class="form-group">
+							<label for="name">Hinh anh:</label>
+							<input type="file" class="form-control" value="" name="image"
+								[(ngModel)]="entity.image" required #image="ngModel">
+							<div *ngIf="image.invalid && (image.dirty || image.touched)"
+								class="label label-danger">
+								Hình ảnh không được để trống
+							</div>
+						</div>
 					</div>
-				</div>
+					<div class="modal-footer">
+						<button type="submit" [disabled]="!PostForm.valid"
+							class="btn btn-success">Submit</button>
+						<button type="button" class="btn btn-danger" (click)="Create.hide()">Close</button>
+					</div>
+				</form>
 			</div>
-			<!-- //Modal content-->
 		</div>
 	</div>
 	<!-- //Modal2 -->
-	<!-- //signup Model -->
 	<!-- //header-bot -->
 	<!-- navigation -->
 	<div class="ban-top">
@@ -199,7 +252,7 @@
 									<a class="nav-stylehead" [routerLink]="['/client-blog']"routerLinkActive="router-link-active">Blog</a>
 								</li>
 								<li>
-									<a class="nav-stylehead" [routerLink]="['/home']"routerLinkActive="router-link-active">Chính sách</a>
+									<a class="nav-stylehead" [routerLink]="['/policy']"routerLinkActive="router-link-active">Chính sách</a>
 								</li>
 								<li>
 									<a class="nav-stylehead" [routerLink]="['/contact-client']"routerLinkActive="router-link-active">Liên hệ</a>

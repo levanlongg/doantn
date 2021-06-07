@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
-const httpOptions = {
+const HttpOptionss = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
   }),
@@ -13,11 +15,25 @@ const httpOptions = {
 })
 export class CheckoutService {
 
-  private API_URL = 'http://localhost:5000/api';
-  constructor(private readonly http: HttpClient) {}
-  checkout(order: any): Observable<number> {
-    const url = `${this.API_URL}/orders`;
+  public API_URL = environment.apiUrl + '/orders';
+  public API_URL1 = environment.apiUrl + '/contact';
+  constructor(private readonly _http: HttpClient) {}
+  checkout(order: any): Observable<any> {
+    // const url = `${this.API_URL}/orders`;
     var orderString = JSON.stringify(order);
-    return this.http.post<any>(url, orderString, httpOptions);
+    return this._http.post<any>(this.API_URL, orderString, HttpOptionss);
+  }
+  // checkout(data: any): Observable<any> {
+  //   //debugger;
+  //   var orderString = JSON.stringify(data);
+  //   return this._http.post<any>(this.API_URL, orderString, HttpOptionss).pipe(map(res => {
+  //     return res;
+  //   }));
+  // }
+  contact(data: any): Observable<any> {
+    //debugger;
+    return this._http.post<any>(this.API_URL1, data, HttpOptionss).pipe(map(res => {
+      return res;
+    }));
   }
 }
