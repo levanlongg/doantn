@@ -53,6 +53,8 @@ class OrderController extends Controller
     {
         return OderModel::where("order_name","like","%".$name."%")
                             ->orwhere("order_email","like","%".$name."%")
-                            ->orwhere("order_phone","like","%".$name."%")->get();
+                            ->orwhere("order_phone","like","%".$name."%")
+                            ->orwhere("payment_status","like","%".$name."%")
+                            ->get();
     }
 }

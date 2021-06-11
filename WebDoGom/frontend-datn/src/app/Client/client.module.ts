@@ -30,6 +30,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { PolicyComponent } from './policy/policy.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 // import { ProductModule } from './product/product.module'
 
 // const routes: Routes = [
@@ -44,6 +45,7 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
   ListProductComponent, ProductDetailComponent, PolicyComponent, BlogDetailComponent, 
    ],
   imports: [
+    NgxPayPalModule,
     CommonModule,
     BrowserModule,
     ModalModule.forRoot(),

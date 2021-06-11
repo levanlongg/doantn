@@ -148,7 +148,18 @@ Route::get('news-list','Client\Knowneage_Blog@List_news');
 Route::get('list-ceramics','Client\Knowneage_Blog@List_Knowleage_ceramics');
 //news-detail
 Route::get('news-detail/{id}','Admin\NewsController@newsById');
-// Route::get('search-pro-client/{name}',[HomeController::class,'search']);
+
+//statics
+Route::get('total-revenue','Admin\statics@total_revenue');
+Route::get('total-new-order','Admin\statics@total_new_order');
+Route::get('total-order-dg','Admin\statics@total_order_dg');
+Route::get('total-order-vc','Admin\statics@total_order_vc');
+Route::get('total-product','Admin\statics@total_product');
+Route::get('static-mounth','Admin\statics@statistic_order_by_month');
+Route::get('static-year','Admin\statics@statistic_order_by_year');
+
+
+
 
 
 // Route::group(['middleware'=>'auth:api'],function(){

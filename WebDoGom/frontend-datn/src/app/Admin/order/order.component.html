@@ -200,8 +200,10 @@
                 <div class="agile-grids">
                     <!-- tables -->
                     <div class="table-heading">
-                        <h2 style="color: black;">Quản lý tin tức</h2>
+                        <h2 style="color: black;">Quản lý đơn hàng</h2>
                     </div>
+                    <p style="color: red;">*Ghi chú:</p>
+                    <p style="color: black;">Tình trạng 0 =>Chưa giao hàng, Tình trạng 1 =>Đã đóng gói,<br/> Tình trạng 2 => Đang vận chuyển, Tình trạng 3 => Đã giao hàng và thanh toán</p>
                     <div class="agile-tables">
                         <div class="w3l-table-info">
                             <!-- <button type="button" class="btn btn-success" (click)="showCreate()"><i
@@ -214,6 +216,7 @@
                                         <th style="text-align: center;">Địa chỉ</th>
                                         <th style="text-align: center;">Ghi chú</th>
                                         <th style="text-align: center;">Tổng tiền</th>
+                                        <th style="text-align: center;">Tình trạng</th>
                                         <th style="text-align: center;">Tác vụ</th>
                                     </tr>
                                 </thead>
@@ -225,6 +228,7 @@
                                         <td style="text-align: center;">{{item.order_address}}</td>
                                         <td style="text-align: center;">{{item.order_note}}</td>
                                         <td style="text-align: center;">{{item.totalMoney | currency : "VND"}}</td>
+                                        <td style="text-align: center;">{{item.payment_status}}</td>
                                         <td style="text-align: center;">
                                             <button style="margin-left: 1%;" type="button" class="btn btn-success" (click)="showView(item.id)"><i class="glyphicon glyphicon-eye-open"></i></button>
                                             <button style="margin-left: 1%;" type="button" class="btn btn-success"><i
@@ -295,11 +299,16 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3"><label for="content">Tình trạng:</label>
-                                            <input type="text" class="form-control" value="" name="payment_status"
-                                                [(ngModel)]="entity.payment_status" required #payment_status="ngModel">
+                                            <select name="payment_status" [(ngModel)]="entity.payment_status" class="form-control"
+                                            required #payment_status="ngModel">
+                                                <option value="0">Chưa giao hàng</option>
+                                                <option value="1">Đã đóng gói</option>
+                                                <option value="2">Đang vận chuyển</option>
+                                                <option value="3">Đã giao hàng và thanh toán</option>
+                                            </select>
                                             <div *ngIf="payment_status.invalid && (payment_status.dirty || payment_status.touched)"
                                                 class="label label-danger">
-                                                Số điện thoại không được để trống
+                                                Tình trạng không được để trống
                                             </div>
                                         </div>
                                         <div class="col-md-3"><label for="content">Số điện thoại:</label>
@@ -418,11 +427,16 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3"><label for="content">Tình trạng:</label>
-                                            <input type="text" class="form-control" value="" name="payment_status"
-                                                [(ngModel)]="entity.payment_status" required #payment_status="ngModel">
+                                            <select name="payment_status" [(ngModel)]="entity.payment_status" class="form-control"
+                                            required #payment_status="ngModel">
+                                                <option value="0">Chưa giao hàng</option>
+                                                <option value="1">Đã đóng gói</option>
+                                                <option value="2">Đang vận chuyển</option>
+                                                <option value="3">Đã giao hàng và thanh toán</option>
+                                            </select>
                                             <div *ngIf="payment_status.invalid && (payment_status.dirty || payment_status.touched)"
                                                 class="label label-danger">
-                                                Số điện thoại không được để trống
+                                                Tình trạng không được để trống
                                             </div>
                                         </div>
                                         <div class="col-md-3"><label for="content">Số điện thoại:</label>
