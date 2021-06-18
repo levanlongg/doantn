@@ -15,7 +15,11 @@ export class ProductService {
 
   public urlAPI = environment.apiUrl + '/product';
   public urlAPIs = environment.apiUrl + '/searchproduct';
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) 
+  { 
+    this.getListProduct()
+  }
+
 
   getListProduct(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI).pipe(map(res => {
@@ -23,12 +27,11 @@ export class ProductService {
     }));
   }
   
-  postItemProduct(data: any): Observable<any> {
-    //debugger;
-    return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
-      return res;
-    }));
+  public postItemProduct(form)
+  {
+    return this._http.post(this.urlAPI, form);
   }
+  
   GetSingleProduct(id: any): Observable<any> {
     return this._http.get<any>(this.urlAPI + "/" + id).pipe(map(res => {
       return res;

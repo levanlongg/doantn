@@ -204,8 +204,9 @@
                     </div>
                     <div class="tables">
                         <div class="w3l-table-info">
-                            <button type="button" class="btn btn-success" (click)="showCreate()"><i
-                                    class="glyphicon glyphicon-plus"></i></button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddModal">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </button>
                             <table id="table">
                                 <thead>
                                     <tr>
@@ -224,11 +225,10 @@
                                         *ngFor="let item of items | paginate: { itemsPerPage: 20, currentPage: p }; let i=index;">
                                         <td style="text-align: center;">{{i+1}}</td>
                                         <td style="text-align: center;">{{item.name}}</td>
-                                        <td style="text-align: center;"><img
-                                                src="../assets/Client/hinh_anh_sp/{{item.image}}"
-                                                style="width: 50px; height: 50px;" /></td>
+                                        <td style="text-align: center;"><img style="width:70px; height:70px"
+                                                *ngIf="item.image" [src]="createImg(item.image)"></td>
                                         <td style="text-align: center;">{{item.origin}}</td>
-                                        <td style="text-align: center;">{{item.amount}}</td>
+                                        <td style="text-align: center;">{{item.amountsp}}</td>
                                         <td style="text-align: center;">{{item.sales_prices | currency : "VND"}}</td>
                                         <td style="text-align: center;">{{item.status}}</td>
                                         <td style="text-align: center;">
@@ -259,197 +259,202 @@
                 <div class="col-md-4"></div>
             </div>
             <!-- Create Modal -->
-            <div bsModal #Create="bs-modal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg">
+            <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
-                            <div class="modal-header">
-                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Thêm sản phẩm</h4>
-                                <button type="button" class="close pull-right" (click)="Create.hide()"
-                                    aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+                        <div class="modal-header">
+                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Thêm sản phẩm mới</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closebutton>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="name">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" value="" name="name"
-                                            [(ngModel)]="entity.name" required #name="ngModel">
-                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                                            class="label label-danger">
-                                            Tên sản phẩm không được để trống
+                                    <div class="col-md-3">
+                                        <img class="img-thumbnail" id="AddEmpImage" style="width: 200px; height: 150px;"
+                                            src="../assets/Admin/images/g4.jpg">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="name">Hình ảnh:</label>
+                                                <input type="file" id="image" class="form-control" value="" name="image"
+                                                    (change)="onSelect($event)" accept='image/*' ngModel required
+                                                    #image="ngModel">
+                                                <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                                    class="label label-danger">
+                                                    Hình ảnh không được để trống
+                                                </div>
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="name">Tên sản phẩm:</label>
+                                                <input type="text" class="form-control" value="" name="name" id="name"
+                                                    ngModel required #name="ngModel">
+                                                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                                    class="label label-danger">
+                                                    Tên sản phẩm không được để trống
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
                                     <div class="col-md-4">
-                                        <label for="size">Kích thước:</label>
-                                        <input type="text" class="form-control" value="" name="size"
-                                            [(ngModel)]="entity.size" required #size="ngModel">
+                                        <label for="name"> Kích thước:</label>
+                                        <input type="text" class="form-control" value="" name="size" id="size" ngModel
+                                            required #size="ngModel">
                                         <div *ngIf="size.invalid && (size.dirty || size.touched)"
                                             class="label label-danger">
                                             Kích thước không được để trống
                                         </div>
                                     </div>
                                     <div class="col-md-4">
+                                        <label for="name">Số lô hàng:</label>
+                                        <input type="text" class="form-control" value="" name="shipment_number"
+                                            id="shipment_number" ngModel required #shipment_number="ngModel">
+                                        <div *ngIf="shipment_number.invalid && (shipment_number.dirty || shipment_number.touched)"
+                                            class="label label-danger">
+                                            Số lô hàng không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label for="origin">Xuất xứ:</label>
-                                        <input type="text" class="form-control" value="" name="origin"
-                                            [(ngModel)]="entity.origin" required #origin="ngModel">
+                                        <input type="text" class="form-control" value="" name="origin" id="origin"
+                                            ngModel required #origin="ngModel">
                                         <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
                                             class="label label-danger">
                                             Xuất xứ không được để trống
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="material">Chất liệu:</label>
-                                            <input type="text" class="form-control" value="" name="material"
-                                                [(ngModel)]="entity.material" required #material="ngModel">
-                                            <div *ngIf="material.invalid && (material.dirty || material.touched)"
-                                                class="label label-danger">
-                                                Chất liệu không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="name">Chú ý:</label>
-                                            <input type="text" class="form-control" value="" name="note"
-                                                [(ngModel)]="entity.note" required #note="ngModel">
-                                            <div *ngIf="note.invalid && (note.dirty || note.touched)"
-                                                class="label label-danger">
-                                                Chú ý không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="name">Số lô hàng:</label>
-                                            <input type="text" class="form-control" value="" name="shipment_number"
-                                                [(ngModel)]="entity.shipment_number" required
-                                                #shipment_number="ngModel">
-                                            <div *ngIf="shipment_number.invalid && (shipment_number.dirty || shipment_number.touched)"
-                                                class="label label-danger">
-                                                Số lô hàng không được để trống
-                                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="material">Chất liệu:</label>
+                                        <input type="text" class="form-control" value="" name="material" id="material"
+                                            ngModel required #material="ngModel">
+                                        <div *ngIf="material.invalid && (material.dirty || material.touched)"
+                                            class="label label-danger">
+                                            Chất liệu không được để trống
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="name">Loại sản phẩm:</label>
-                                            <select name="product_type_id" [(ngModel)]="entity.product_type_id"
-                                                class="form-control" required #product_type_id="ngModel">
-                                                <option *ngFor="let productype of listproducttype"
-                                                    [value]="productype.id">{{productype.name}}</option>
-                                            </select>
-                                            <div *ngIf="product_type_id.invalid && (product_type_id .dirty || product_type_id .touched)"
-                                                class="label label-danger">
-                                                Loại sản phẩm không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="name">Tình trạng:</label>
-                                            <select name="status" [(ngModel)]="entity.status" class="form-control"
-                                                required #status="ngModel">
-                                                <option value="Còn hàng">Còn hàng</option>
-                                                <option value="Hết hàng">Hết hàng</option>
-                                            </select>
-                                            <!-- <input type="number" class="form-control" value="" name="status"
-                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
-                                            <div *ngIf="status.invalid && (status.dirty || status.touched)"
-                                                class="label label-danger">
-                                                Tình trạng không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="name">Số lượng:</label>
-                                            <input type="number" class="form-control" value="" name="amount"
-                                                [(ngModel)]="entity.amount" required #amount="ngModel">
-                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
-                                                class="label label-danger">
-                                                Số lượng không được để trống
-                                            </div>
+                                    <div class="col-md-4">
+                                        <label for="name">Chú ý:</label>
+                                        <input type="text" class="form-control" value="" name="note" id="note" ngModel
+                                            required #note="ngModel">
+                                        <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                                            class="label label-danger">
+                                            Chú ý không được để trống
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="name">Nhà sản xuất:</label>
-                                            <select name="producer_id" [(ngModel)]="entity.producer_id"
-                                                class="form-control" required #producer_id="ngModel">
-                                                <option *ngFor="let producer of listproducer" [value]="producer.id">
-                                                    {{producer.name}}</option>
-                                            </select>
-                                            <div *ngIf="product_type_id .invalid && (producer_id .dirty || producer_id .touched)"
-                                                class="label label-danger">
-                                                Nhà sản xuất không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="number">Giá niêm yết:</label>
-                                            <input type="number" class="form-control" value="" name="import_prices"
-                                                [(ngModel)]="entity.import_prices" required #import_prices="ngModel">
-                                            <div *ngIf="import_prices.invalid && (import_prices.dirty || import_prices.touched)"
-                                                class="label label-danger">
-                                                Giá nhập không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="number">Giá bán:</label>
-                                            <input type="number" class="form-control" value="" name="sales_prices"
-                                                [(ngModel)]="entity.sales_prices" required #sales_prices="ngModel">
-                                            <div *ngIf="sales_prices.invalid && (sales_prices.dirty || sales_prices.touched)"
-                                                class="label label-danger">
-                                                Gá bán không được để trống
-                                            </div>
+                                    <div class="col-md-4">
+                                        <label for="name">Số lượng:</label>
+                                        <input type="number" min="1" class="form-control" value="" name="amountsp"
+                                            id="amountsp" ngModel required #amountsp="ngModel">
+                                        <div *ngIf="amountsp.invalid && (amountsp.dirty || amountsp.touched)"
+                                            class="label label-danger">
+                                            Số lượng không được để trống
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Giới thiệu:</label>
-                                    <textarea class="form-control" value="" name="introduction"
-                                        [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
-                                    <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
-                                        class="label label-danger">
-                                        Giới thiệu không được để trống
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <label for="name">Hinh ảnh:</label>
-                                            <input type="file" class="form-control" value="" name="image"
-                                                [(ngModel)]="entity.image" required #image="ngModel">
-                                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                                class="label label-danger">
-                                                Hình ảnh không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="show_home">Hiển thị:</label>
-                                            <select name="show_home" [(ngModel)]="entity.show_home" class="form-control"
-                                                required #show_home="ngModel">
-                                                <option value="1">Hiển thị trang chủ</option>
-                                                <option value="0">Không hiển thị</option>
-                                            </select>
-                                            <!-- <input type="number" class="form-control" value="" name="status"
-                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
-                                            <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
-                                                class="label label-danger">
-                                                Hiển thị không được để trống
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" [disabled]="!PostForm.valid"
-                                    class="btn btn-success">Submit</button>
-                                <button type="button" class="btn btn-danger" (click)="Create.hide()">Close</button>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name">Loại sản phẩm:</label>
+                                        <select name="product_type_id" class="form-control" id="product_type_id" ngModel
+                                            required #product_type_id="ngModel">
+                                            <option *ngFor="let productype of listproducttype" [value]="productype.id">
+                                                {{productype.name}}</option>
+                                        </select>
+                                        <div *ngIf="product_type_id .invalid && (product_type_id .dirty || product_type_id .touched)"
+                                            class="label label-danger">
+                                            Loại sản phẩm không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="name">Tình trạng:</label>
+                                        <select name="status" class="form-control" id="status" ngModel required
+                                            #status="ngModel">
+                                            <option value="Còn hàng">Còn hàng</option>
+                                            <option value="Hết hàng">Hết hàng</option>
+                                        </select>
+                                        <div *ngIf="status.invalid && (status.dirty || status.touched)"
+                                            class="label label-danger">
+                                            Tình trạng không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="show_home">Hiển thị:</label>
+                                        <select name="show_home" class="form-control" id="show_home" ngModel required
+                                            #show_home="ngModel">
+                                            <option value="1">Hiển thị trang chủ</option>
+                                            <option value="0">Không hiển thị</option>
+                                            <option value="2">Sản phẩm khác</option>
+                                        </select>
+                                        <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
+                                            class="label label-danger">
+                                            Hiển thị không được để trống
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="name">Nhà sản xuất:</label>
+                                        <select name="producer_id" class="form-control" id="producer_id" ngModel
+                                            required #producer_id="ngModel">
+                                            <option *ngFor="let producer of listproducer" [value]="producer.id">
+                                                {{producer.name}}</option>
+                                        </select>
+                                        <div *ngIf="product_type_id .invalid && (producer_id .dirty || producer_id .touched)"
+                                            class="label label-danger">
+                                            Nhà sản xuất không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="number">Giá niêm yết:</label>
+                                        <input type="number" class="form-control" value="" name="import_prices"
+                                            id="import_prices" ngModel required #import_prices="ngModel">
+                                        <div *ngIf="import_prices.invalid && (import_prices.dirty || import_prices.touched)"
+                                            class="label label-danger">
+                                            Giá nhập không được để trống
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="number">Giá bán:</label>
+                                        <input type="number" class="form-control" value="" name="sales_prices"
+                                            id="sales_prices" ngModel required #sales_prices="ngModel">
+                                        <div *ngIf="sales_prices.invalid && (sales_prices.dirty || sales_prices.touched)"
+                                            class="label label-danger">
+                                            Gá bán không được để trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Giới thiệu:</label>
+                                <textarea style="height: 200px;" class="form-control" value="" name="introduction"
+                                    id="introduction" ngModel required #introduction="ngModel"></textarea>
+                                <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
+                                    class="label label-danger">
+                                    Giới thiệu không được để trống
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" (click)="add()"
+                                id="closeModal">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -468,43 +473,71 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <label for="name">Id</label>
-                                        <input type="hidden" [(ngModel)]="checkedid">
-                                        <input type="number" class="form-control" value="" name="id"
-                                            [(ngModel)]="entity.id" required #id="ngModel">
-                                        <div *ngIf="id.invalid && (id.dirty || id.touched)" class="label label-danger">
-                                            Id không được để trống
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="size">Kích thước:</label>
-                                        <input type="text" class="form-control" value="" name="size"
-                                            [(ngModel)]="entity.size" required #size="ngModel">
-                                        <div *ngIf="size.invalid && (size.dirty || size.touched)"
-                                            class="label label-danger">
-                                            Kích thước không được để trống
-                                        </div>
-                                    </div>
                                     <div class="col-md-4">
-                                        <label for="name">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" value="" name="name"
-                                            [(ngModel)]="entity.name" required #name="ngModel">
-                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                                            class="label label-danger">
-                                            Tên sản phẩm không được để trống
+                                        <img class="img-thumbnail" [src]="createImg(entity.image)"
+                                            style="width: 270px; height: 220px;">
+                                        <input type="hidden" id="image" [(ngModel)]="entity.image" class="form-control"
+                                            value="" name="image" (change)="onSelect($event)" accept='image/*'>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="name">Id</label>
+                                                <input type="hidden" [(ngModel)]="checkedid">
+                                                <input type="number" class="form-control" value="" name="id"
+                                                    [(ngModel)]="entity.id" required #id="ngModel">
+                                                <div *ngIf="id.invalid && (id.dirty || id.touched)"
+                                                    class="label label-danger">
+                                                    Id không được để trống
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="show_home">Hiển thị:</label>
+                                                <select name="show_home" [(ngModel)]="entity.show_home"
+                                                    class="form-control" required #show_home="ngModel">
+                                                    <option value="1">Hiển thị trang chủ</option>
+                                                    <option value="0">Không hiển thị</option>
+                                                    <option value="2">Sản phẩm khác</option>
+                                                </select>
+                                                <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
+                                                    class="label label-danger">
+                                                    Hiển thị không được để trống
+                                                </div>
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="size">Kích thước:</label>
+                                                <input type="text" class="form-control" value="" name="size"
+                                                    [(ngModel)]="entity.size" required #size="ngModel">
+                                                <div *ngIf="size.invalid && (size.dirty || size.touched)"
+                                                    class="label label-danger">
+                                                    Kích thước không được để trống
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="origin">Xuất xứ:</label>
+                                                <input type="text" class="form-control" value="" name="origin"
+                                                    [(ngModel)]="entity.origin" required #origin="ngModel">
+                                                <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
+                                                    class="label label-danger">
+                                                    Xuất xứ không được để trống
+                                                </div>
+                                            </div>
+                                        </div><br/>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="name">Tên sản phẩm:</label>
+                                                <input type="text" class="form-control" value="" name="name"
+                                                    [(ngModel)]="entity.name" required #name="ngModel">
+                                                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                                    class="label label-danger">
+                                                    Tên sản phẩm không được để trống
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="origin">Xuất xứ:</label>
-                                        <input type="text" class="form-control" value="" name="origin"
-                                            [(ngModel)]="entity.origin" required #origin="ngModel">
-                                        <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
-                                            class="label label-danger">
-                                            Xuất xứ không được để trống
-                                        </div>
-                                    </div>
-                                </div>
+                                </div><br/>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -568,9 +601,9 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="name">Số lượng:</label>
-                                            <input type="number" class="form-control" value="" name="amount"
-                                                [(ngModel)]="entity.amount" required #amount="ngModel">
-                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+                                            <input type="number" class="form-control" value="" name="amountsp"
+                                                [(ngModel)]="entity.amountsp" required #amountsp="ngModel">
+                                            <div *ngIf="amountsp.invalid && (amountsp.dirty || amountsp.touched)"
                                                 class="label label-danger">
                                                 Số lượng không được để trống
                                             </div>
@@ -613,40 +646,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Giới thiệu:</label>
-                                    <textarea class="form-control" value="" name="introduction"
+                                    <textarea style="height: 150px;" class="form-control" value="" name="introduction"
                                         [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
                                     <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
                                         class="label label-danger">
                                         Giới thiệu không được để trống
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <label for="name">Hinh ảnh:</label>
-                                            <input type="text" class="form-control" value="" name="image"
-                                                [(ngModel)]="entity.image" required #image="ngModel">
-                                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                                class="label label-danger">
-                                                Hình ảnh không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="show_home">Hiển thị:</label>
-                                            <select name="show_home" [(ngModel)]="entity.show_home" class="form-control"
-                                                required #show_home="ngModel">
-                                                <option value="1">Hiển thị trang chủ</option>
-                                                <option value="0">Không hiển thị</option>
-                                            </select>
-                                            <!-- <input type="number" class="form-control" value="" name="status"
-                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
-                                            <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
-                                                class="label label-danger">
-                                                Hiển thị không được để trống
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -672,43 +677,71 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <label for="name">Id</label>
-                                        <input type="hidden" [(ngModel)]="checkedid">
-                                        <input type="number" class="form-control" value="" name="id"
-                                            [(ngModel)]="entity.id" required #id="ngModel">
-                                        <div *ngIf="id.invalid && (id.dirty || id.touched)" class="label label-danger">
-                                            Id không được để trống
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="size">Kích thước:</label>
-                                        <input type="text" class="form-control" value="" name="size"
-                                            [(ngModel)]="entity.size" required #size="ngModel">
-                                        <div *ngIf="size.invalid && (size.dirty || size.touched)"
-                                            class="label label-danger">
-                                            Kích thước không được để trống
-                                        </div>
-                                    </div>
                                     <div class="col-md-4">
-                                        <label for="name">Tên sản phẩm:</label>
-                                        <input type="text" class="form-control" value="" name="name"
-                                            [(ngModel)]="entity.name" required #name="ngModel">
-                                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                                            class="label label-danger">
-                                            Tên sản phẩm không được để trống
+                                        <img class="img-thumbnail" [src]="createImg(entity.image)"
+                                            style="width: 270px; height: 220px;">
+                                        <input type="hidden" id="image" [(ngModel)]="entity.image" class="form-control"
+                                            value="" name="image" (change)="onSelect($event)" accept='image/*'>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="name">Id</label>
+                                                <input type="hidden" [(ngModel)]="checkedid">
+                                                <input type="number" class="form-control" value="" name="id"
+                                                    [(ngModel)]="entity.id" required #id="ngModel">
+                                                <div *ngIf="id.invalid && (id.dirty || id.touched)"
+                                                    class="label label-danger">
+                                                    Id không được để trống
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="show_home">Hiển thị:</label>
+                                                <select name="show_home" [(ngModel)]="entity.show_home"
+                                                    class="form-control" required #show_home="ngModel">
+                                                    <option value="1">Hiển thị trang chủ</option>
+                                                    <option value="0">Không hiển thị</option>
+                                                    <option value="2">Sản phẩm khác</option>
+                                                </select>
+                                                <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
+                                                    class="label label-danger">
+                                                    Hiển thị không được để trống
+                                                </div>
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="size">Kích thước:</label>
+                                                <input type="text" class="form-control" value="" name="size"
+                                                    [(ngModel)]="entity.size" required #size="ngModel">
+                                                <div *ngIf="size.invalid && (size.dirty || size.touched)"
+                                                    class="label label-danger">
+                                                    Kích thước không được để trống
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="origin">Xuất xứ:</label>
+                                                <input type="text" class="form-control" value="" name="origin"
+                                                    [(ngModel)]="entity.origin" required #origin="ngModel">
+                                                <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
+                                                    class="label label-danger">
+                                                    Xuất xứ không được để trống
+                                                </div>
+                                            </div>
+                                        </div><br/>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="name">Tên sản phẩm:</label>
+                                                <input type="text" class="form-control" value="" name="name"
+                                                    [(ngModel)]="entity.name" required #name="ngModel">
+                                                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                                    class="label label-danger">
+                                                    Tên sản phẩm không được để trống
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="origin">Xuất xứ:</label>
-                                        <input type="text" class="form-control" value="" name="origin"
-                                            [(ngModel)]="entity.origin" required #origin="ngModel">
-                                        <div *ngIf="origin.invalid && (origin.dirty || origin.touched)"
-                                            class="label label-danger">
-                                            Xuất xứ không được để trống
-                                        </div>
-                                    </div>
-                                </div>
+                                </div><br/>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -772,9 +805,9 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="name">Số lượng:</label>
-                                            <input type="number" class="form-control" value="" name="amount"
-                                                [(ngModel)]="entity.amount" required #amount="ngModel">
-                                            <div *ngIf="amount.invalid && (amount.dirty || amount.touched)"
+                                            <input type="number" class="form-control" value="" name="amountsp"
+                                                [(ngModel)]="entity.amountsp" required #amountsp="ngModel">
+                                            <div *ngIf="amountsp.invalid && (amountsp.dirty || amountsp.touched)"
                                                 class="label label-danger">
                                                 Số lượng không được để trống
                                             </div>
@@ -817,38 +850,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Giới thiệu:</label>
-                                    <textarea class="form-control" value="" name="introduction"
+                                    <textarea style="height: 150px;" class="form-control" value="" name="introduction"
                                         [(ngModel)]="entity.introduction" required #introduction="ngModel"></textarea>
                                     <div *ngIf="introduction.invalid && (introduction.dirty || introduction.touched)"
                                         class="label label-danger">
                                         Giới thiệu không được để trống
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <label for="name">Hinh ảnh:</label>
-                                            <input type="text" class="form-control" value="" name="image"
-                                                [(ngModel)]="entity.image" required #image="ngModel">
-                                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                                class="label label-danger">
-                                                Hình ảnh không được để trống
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="show_home">Hiển thị:</label>
-                                            <select name="show_home" [(ngModel)]="entity.show_home" class="form-control"
-                                                required #show_home="ngModel">
-                                                <option value="1">Hiển thị trang chủ</option>
-                                                <option value="0">Không hiển thị</option>
-                                            </select>
-                                            <!-- <input type="number" class="form-control" value="" name="status"
-                                                [(ngModel)]="entity.status" required #status="ngModel"> -->
-                                            <div *ngIf="show_home.invalid && (show_home.dirty || show_home.touched)"
-                                                class="label label-danger">
-                                                Hiển thị không được để trống
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

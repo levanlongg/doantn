@@ -18,7 +18,7 @@ class ProductModel extends Model
         'shipment_number',
         'introduction',
         'status',
-        'amount',
+        'amountsp',
         'product_type_id ',
         'producer_id ',
         'import_prices',

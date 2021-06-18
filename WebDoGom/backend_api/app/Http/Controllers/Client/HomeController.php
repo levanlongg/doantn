@@ -50,6 +50,14 @@ class HomeController extends Controller
         return response()->json($tranhgom, 200);
     }
 
+    public function Sanphamkhac()
+    {
+        $spkhac = DB::table('product')->where([
+            ['show_home', '=', '2'],
+        ])->get();
+        return response()->json($spkhac, 200);
+    }
+
     public function List_product()
     {
         $tranhgom = DB::table('product')->get();
@@ -122,5 +130,144 @@ class HomeController extends Controller
         } catch (\Exception $e)
         {
         }
+    }
+
+    //lọc
+    public function under500()
+    {
+        $under500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [0, 499000])
+        ->get();
+        return response()->json($under500,200);
+    }
+
+    public function from500to1000()
+    {
+        $from500to1000 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [500000, 1000000])
+        ->get();
+        return response()->json($from500to1000,200);
+    }
+
+    public function from1000to1500()
+    {
+        $from1000to1500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [1000000, 1500000])
+        ->get();
+        return response()->json($from1000to1500,200);
+    }
+
+    public function from1500to2000()
+    {
+        $from1500to2000 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [1500000, 2000000])
+        ->get();
+        return response()->json($from1500to2000,200);
+    }
+
+    public function from2000to2500()
+    {
+        $from2000to2500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [2000000, 2500000])
+        ->get();
+        return response()->json($from2000to2500,200);
+    }
+
+    public function from2500to3500()
+    {
+        $from2500to3500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [2500000, 3500000])
+        ->get();
+        return response()->json($from2500to3500,200);
+    }
+
+    public function from3500to4500()
+    {
+        $from3500to4500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [3500000, 4500000])
+        ->get();
+        return response()->json($from3500to4500,200);
+    }
+
+    public function from4500to5500()
+    {
+        $from4500to5500 = ProductModel::select("*")
+        ->whereBetween('sales_prices', [4500000, 5500000])
+        ->get();
+        return response()->json($from4500to5500,200);
+    }
+
+    public function over5500()
+    {
+        $over5500 = ProductModel::select("*")
+        ->where('sales_prices', '>', 5500000 )
+        ->get();
+        return response()->json($over5500,200);
+    }
+
+    //loc loai sp
+
+    public function Gomgiadung()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '23'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Gomtrangtri()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '21'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Gomphongthuy()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '22'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Quatang()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '24'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Tranhgom()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '20'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Tuonggom()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '25'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Dotho()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '26'],
+        ])->get();
+        return response()->json($gomgiadung,200);
+    }
+
+    public function Doluuniem()
+    {
+        $gomgiadung = DB::table('product')->where([
+            ['product_type_id', '=', '27'],
+        ])->get();
+        return response()->json($gomgiadung,200);
     }
 }

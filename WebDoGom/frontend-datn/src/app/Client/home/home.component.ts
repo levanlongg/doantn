@@ -6,6 +6,7 @@ import { CartService } from '../Client-service/cart.service';
 import { HomeService } from '../Client-service/home.service'
 import { ProductListService } from '../Client-service/product-list.service';
 import { AuthService } from '../Client-service/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -107,6 +108,9 @@ export class HomeComponent implements OnInit {
     this.createSuccess();
   }
 
+  createImg(path) {
+    return environment.urlImg + 'product/' + path;
+  }
 
   showCreate() {
     this.entity = {};

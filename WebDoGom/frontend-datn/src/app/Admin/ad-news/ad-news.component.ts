@@ -1,8 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { NewsTypeService } from '../Ad-Service/news-type.service';
 import { NewsService } from '../Ad-Service/news.service';
+declare var $
+declare var toastr;
+declare var Toast;
 
 @Component({
   selector: 'app-ad-news',
@@ -11,11 +17,14 @@ import { NewsService } from '../Ad-Service/news.service';
 })
 export class AdNewsComponent implements OnInit {
 
+
   [x: string]: any;
   @ViewChild('Create', { static: false }) Create: ModalDirective;
   @ViewChild('Update', { static: false }) Update: ModalDirective;
   @ViewChild('View', { static: false }) View: ModalDirective;
+  @ViewChild('closebutton') closebutton;
 
+  fileUpload: ElementRef; files = [];
   public items: any[];
   public entity: any;
   public id: string;
@@ -24,20 +33,63 @@ export class AdNewsComponent implements OnInit {
   listnewstype = [];
   p: number = 1;
   i: number;
+  file: any;
 
   constructor(
+    private http: HttpClient,
     private newslist: NewsService,
     private newstype: NewsTypeService,
     private toastr: ToastrService
   ) { }
+  
+  selectedImage: File = null;
+
+  createImg(path) {
+    return environment.urlImg + 'image/' + path;
+  }
+  
+  onSelect(event) {
+    var tmppath = URL.createObjectURL(event.target.files[0]);
+    $("#AddEmpImage").fadeIn("fast").attr("src", tmppath);
+    this.selectedImage = <File>event.target.files[0];
+  }
+
+  add() {
+    const fd = new FormData();
+    fd.append('image', this.selectedImage);
+    fd.append('new_type_id', $("#new_type_id").val());
+    fd.append('title', $("#title").val());
+    fd.append('description', $("#description").val());
+    fd.append('content', $("#content").val());
+    this.newslist.postNews(fd).subscribe(
+      res => {
+        if (res) {
+          var result = confirm("Bạn muốn thêm loại tin?");
+          if (result == true) {
+            this.loadData();
+            this.createSuccess();
+            this.closebutton.nativeElement.click();
+          }
+          else {
+            this.createEror();
+            this.closebutton.nativeElement.click();
+          }
+        }
+      },
+    )
+  }
+
+
   ngOnInit(): void {
 
     this.loadData();
 
     this.newstype.getListnewtype().subscribe((res: any) => {
       this.listnewstype = res;
-      
+
     });
+
+
   }
   createSuccess() {
     this.toastr.success('Thêm thành công', 'Thông báo!', { timeOut: 2000 });
@@ -85,26 +137,8 @@ export class AdNewsComponent implements OnInit {
     });
     this.View.show();
   }
-
-  SaveForm(values: any) {
-    if (this.checkedid == 0) {
-      this.newslist.postNews(values).subscribe((res) => {
-        if (res) {
-          var result = confirm("Bạn muốn thêm loại tin?");
-          if (result == true) {
-            this.loadData();
-            this.Create.hide();
-            this.createSuccess();
-          }
-          else {
-            this.createEror();
-          }
-        }
-      });
-    }
-  }
-
   UpdateForm(values: any) {
+
     if (this.id = values.id) {
       this.newslist.editItemNews(this.id, values).subscribe((res) => {
         var result = confirm("Bạn muốn cập nhật loại tin?");

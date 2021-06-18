@@ -32,7 +32,6 @@ class UserController extends Controller
             'email' =>'required',
             'password' =>'required',
             'role_id' =>'required',
-            'image' =>'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()->all(), 400]);
@@ -44,19 +43,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role_id = $request->role_id;
-        $user->image = $request->image;
-        // $get_image1 = $request->file('image');
-        // if ($get_image1) {
-        //     $get_new_image1 = $get_image1->getClientOriginalName();
-        //     $name_image1 = current(explode('.', $get_new_image1));
-        //     $new_image1 = $name_image1 . '.' . $get_image1->getClientOriginalExtension();
-        //     $get_image1->move(base_path() . '/public/image/', $new_image1);
-        //     $user->image = $new_image1;
-        //     $user->save();
-        //     return response()->json(['message'=>'Thêm thành công'], 201);
-        // }
-        // $user->image ='0';
-        
         if($user->save())
         {
             return response()->json([

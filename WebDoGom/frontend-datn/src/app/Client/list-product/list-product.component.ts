@@ -6,6 +6,7 @@ import { ProductListService } from '../Client-service/product-list.service';
 import { CartService } from '../Client-service/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../Client-service/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-product',
@@ -25,6 +26,7 @@ export class ListProductComponent implements OnInit {
   p: number = 1;
   i: number;
   productl:any;
+  spkhac = [];
 
   constructor(
     private productService: ProductListService,
@@ -36,8 +38,14 @@ export class ListProductComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadDataProduct();
+    this.loadsanphamkhac();
     
   }
+
+  createImg(path) {
+    return environment.urlImg + 'product/' + path;
+  }  
+  
   createSuccess() {
     this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!', { timeOut: 2000 });
   }
@@ -54,6 +62,13 @@ export class ListProductComponent implements OnInit {
     this.productService.getlistproduct().subscribe((res: any) => {
       this.product = res;
       console.log(this.product);
+    });
+  }
+
+  loadsanphamkhac() {
+    this.productService.getspkhac().subscribe((res: any) => {
+      this.spkhac = res;
+      console.log(this.spkhac);
     });
   }
 
@@ -98,5 +113,110 @@ export class ListProductComponent implements OnInit {
         }
       });
     }
+  }
+
+  //loc
+  under500() {
+    this.productService.under500().subscribe((res: any) => {
+      this.product = res;
+    });
+  } 
+
+  from500to1000() {
+    this.productService.from500to1000().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from1000to1500() {
+    this.productService.from1000to1500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from1500to2000() {
+    this.productService.from1500to2000().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from2000to2500() {
+    this.productService.from2000to2500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from2500to3500() {
+    this.productService.from2500to3500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from3500to4500() {
+    this.productService.from3500to4500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  from4500to5500() {
+    this.productService.from4500to5500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  over5500() {
+    this.productService.over5500().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  //loc loai san pham
+
+  lsptranhgom() {
+    this.productService.lsptranhgom().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lspgomtrangtri() {
+    this.productService.lspgomtrangtri().subscribe((res: any) => {
+      this.product = res;
+    });
+  } 
+
+  lspgomphongthuy() {
+    this.productService.lspgomphongthuy().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lspgomgiadung() {
+    this.productService.lspgomgiadung().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lspgomquatang() {
+    this.productService.lspgomquatang().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lsptuonggomsu() {
+    this.productService.lsptuonggomsu().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lspdotho() {
+    this.productService.lspdotho().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
+
+  lspdoluuniem() {
+    this.productService.lspdoluuniem().subscribe((res: any) => {
+      this.product = res;
+    });
   }
 }

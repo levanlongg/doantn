@@ -12,10 +12,14 @@ const HttpOptionss = {
   providedIn: 'root'
 })
 export class NewsService {
+  
 
   public urlAPI = environment.apiUrl + '/news';
   public urlAPIs = environment.apiUrl + '/searchnews';
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient)
+  { 
+    this.getListNews();
+  }
 
   getListNews(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI).pipe(map(res => {
@@ -23,12 +27,11 @@ export class NewsService {
     }));
   }
   
-  postNews(data: any): Observable<any> {
-    //debugger;
-    return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
-      return res;
-    }));
+  public postNews(form)
+  {
+    return this._http.post(this.urlAPI, form);
   }
+  
   GetSingleNews(id: any): Observable<any> {
     return this._http.get<any>(this.urlAPI + "/" + id).pipe(map(res => {
       return res;

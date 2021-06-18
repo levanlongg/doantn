@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../Client-service/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-detail',
@@ -28,6 +29,10 @@ export class ProductDetailComponent implements OnInit {
       .subscribe((product) => (this.product = product));
   }
 
+  createImg(path) {
+    return environment.urlImg + 'product/' + path;
+  }  
+  
   createSuccess() {
     this.toastr.success('Đã thêm thành công', 'Thông báo!', { timeOut: 3000 });
   }

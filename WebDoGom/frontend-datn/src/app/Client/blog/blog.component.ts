@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { ClientNewsService } from '../Client-service/client-news.service'
 
 @Component({
@@ -32,7 +33,10 @@ export class BlogComponent implements OnInit {
     
   }
   
-
+  createImg(path) {
+    return environment.urlImg + 'image/' + path;
+  }
+  
   loadNews() {
     this.listblog.getNewsList().subscribe((res: any) => {
       this.blog = res;

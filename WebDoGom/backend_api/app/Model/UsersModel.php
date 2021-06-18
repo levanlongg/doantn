@@ -20,7 +20,6 @@ class UsersModel extends Model
         'email',
         'password',
         'role_id ',
-        'image',
         'created_at',
         'updated_at',
     ];

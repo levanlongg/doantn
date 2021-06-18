@@ -624,8 +624,8 @@
 			</h3>
 			<!-- //tittle heading -->
 			<div class="col-md-5 single-right-left">
-				<img src="../assets/Client/hinh_anh_sp/{{product.image}}" data-imagezoom="true" class="img-responsive"
-					alt="">
+				<img *ngIf="product.image" [src]="createImg(product.image)" data-imagezoom="true" class="img-responsive"
+				class="img-thumbnail"	alt="">
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem">
 				<h3>{{product.name}} </h3>

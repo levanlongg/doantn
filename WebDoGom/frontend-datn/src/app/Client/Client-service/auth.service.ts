@@ -54,6 +54,7 @@ export class AuthService {
     }));
   }
   
+ 
   postItemUser(data: any): Observable<any> {
     //debugger;
     return this._http.post<any>(this.urlAPIrgis, data, HttpOptionss).pipe(map(res => {

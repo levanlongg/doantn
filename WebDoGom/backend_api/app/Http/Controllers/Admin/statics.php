@@ -51,7 +51,7 @@ class statics extends Controller
     {
         $model_product = DB::table('product')
         ->get([
-            DB::raw('SUM(amount) as value2'),
+            DB::raw('SUM(amountsp) as value2'),
             ]);
         return response()->json($model_product,200);
     }

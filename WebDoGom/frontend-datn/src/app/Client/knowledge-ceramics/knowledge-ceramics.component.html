@@ -85,9 +85,9 @@
                 <div class="col-sm-9">
                     <div *ngFor="let item of blog | paginate: { itemsPerPage: 6, currentPage: p }">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3"><br/>
                                 <div class="welcome-img">
-                                    <img src="../assets/Client/blogimage/{{item.image}}" alt="" style="height:200px; width: 300px;">
+                                    <img style="height:200px" *ngIf="item.image" [src]="createImg(item.image)">
                                 </div>
                             </div>
                             <div class="col-sm-9">

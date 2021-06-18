@@ -50,7 +50,7 @@
             <div class="w3l-welcome-text">
                 <p style="color: red; font-size: 20px;">{{news_client.title}}</p>
                 <div style="text-align: center;">
-                    <img src="../assets/Client/blogimage/{{news_client.image}}" alt="" style="height:300px; width: 500;">
+                    <img *ngIf="news_client.image" [src]="createImg(news_client.image)" alt="" style="height:300px; width: 500;">
                 </div>
                 <p style="color: black">{{news_client.content}}</p>
             </div>

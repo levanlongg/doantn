@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NewsTypeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProducerController;
@@ -71,6 +72,7 @@ Route::get('news/{id}','Admin\NewsController@newsById');
 Route::post('news','Admin\NewsController@newsSave');
 Route::put('news/{id}','Admin\NewsController@newsUpdate');
 Route::delete('news/{news}','Admin\NewsController@newsDelete');
+Route::get('searchnews/{name}',[NewsController::class,'search']);
 //newtype
 Route::get('newstype','Admin\NewsTypeController@newstype');
 Route::get('newstype/{id}','Admin\NewsTypeController@newstypeById');
@@ -158,10 +160,32 @@ Route::get('total-product','Admin\statics@total_product');
 Route::get('static-mounth','Admin\statics@statistic_order_by_month');
 Route::get('static-year','Admin\statics@statistic_order_by_year');
 
+//lọc khảng giá
+Route::get('under500','Client\HomeController@under500');
+Route::get('from500to1000','Client\HomeController@from500to1000');
+Route::get('from1000to1500','Client\HomeController@from1000to1500');
+Route::get('from1500to2000','Client\HomeController@from1500to2000');
+Route::get('from2000to2500','Client\HomeController@from2000to2500');
+Route::get('from2500to3500','Client\HomeController@from2500to3500');
+Route::get('from3500to4500','Client\HomeController@from3500to4500');
+Route::get('from4500to5500','Client\HomeController@from4500to5500');
+Route::get('over5500','Client\HomeController@over5500');
+
+//lọc loai san pham
+Route::get('lsptranhgom','Client\HomeController@Tranhgom');
+Route::get('lspgomtrangtri','Client\HomeController@Gomtrangtri');
+Route::get('lspgomphongthuy','Client\HomeController@Gomphongthuy');
+Route::get('lspgomgiadung','Client\HomeController@Gomgiadung');
+Route::get('lspgomquatang','Client\HomeController@Quatang');
+Route::get('lsptuonggomsu','Client\HomeController@Tuonggom');
+Route::get('lspdotho','Client\HomeController@Dotho');
+Route::get('lspdoluuniem','Client\HomeController@Doluuniem');
+
+Route::get('sanphamkhac','Client\HomeController@Sanphamkhac');
 
 
 
-
+// Route::post('news', [NewsController::class, 'newsSave'])->name('news');
 // Route::group(['middleware'=>'auth:api'],function(){
 //     Route::apiResource('producer','producer');
 // });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { ClientNewsService } from '../Client-service/client-news.service';
 
 @Component({
@@ -25,4 +26,7 @@ export class BlogDetailComponent implements OnInit {
       .subscribe((news_client) => (this.news_client = news_client));
   }
 
+  createImg(path) {
+    return environment.urlImg + 'image/' + path;
+  } 
 }

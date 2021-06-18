@@ -119,7 +119,7 @@
                 <div class="modal-content">
                     <form #PostForm="ngForm" (ngSubmit)="SaveForm(PostForm.value)" *ngIf="entity">
                         <div class="modal-header">
-                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Đăng ký</h4>
+                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Thêm người dùng admin</h4>
                             <button type="button" class="close pull-right" (click)="Create.hide()"
                                 aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -174,7 +174,7 @@
                                     <div class="col-md-6">
                                         <label for="name"> Quyền:</label>
                                         <select name="role_id" [(ngModel)]="entity.role_id" class="form-control" required #role_id="ngModel">
-                                            <option value="9">Quyền người dùng</option>
+                                        <option *ngFor="let method of listrole" [value]="method.id">{{ method.name }}</option>
                                         </select>
                                         <div *ngIf="role_id.invalid && (role_id.dirty || role_id.touched)"
                                             class="label label-danger">
@@ -190,15 +190,6 @@
                                             Email không được để trống
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Hinh anh:</label>
-                                <input type="file" class="form-control" value="" name="image"
-                                    [(ngModel)]="entity.image" required #image="ngModel">
-                                <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                    class="label label-danger">
-                                    Hình ảnh không được để trống
                                 </div>
                             </div>
                         </div>
@@ -302,8 +293,7 @@
                                             <div class="col-md-4 product-men">
                                                 <div class="men-pro-item simpleCart_shelfItem">
                                                     <div class="men-thumb-item">
-                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
-                                                            style="width:230px;height: 150px;" />
+                                                        <img style="width:230px;height: 190px;" *ngIf="product.image" [src]="createImg(product.image)">
                                                         <div class="men-cart-pro">
                                                             <div class="inner-men-cart-pro">
                                                                 <a [routerLink]="['/product-detail-client',product.id]"
@@ -360,8 +350,7 @@
                                             <div class="col-md-4 product-men">
                                                 <div class="men-pro-item simpleCart_shelfItem">
                                                     <div class="men-thumb-item">
-                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
-                                                            style="width:230px;height: 190px;" />
+                                                        <img style="width:230px;height: 190px;" *ngIf="product.image" [src]="createImg(product.image)">
                                                         <div class="men-cart-pro">
                                                             <div class="inner-men-cart-pro">
                                                                 <a [routerLink]="['/product-detail-client',product.id]"
@@ -404,8 +393,7 @@
                                             <div class="col-md-4 product-men">
                                                 <div class="men-pro-item simpleCart_shelfItem">
                                                     <div class="men-thumb-item">
-                                                        <img src="../assets/Client/hinh_anh_sp/{{product.image}}"
-                                                            style="width:230px;height: 190px;" />
+                                                        <img style="width:230px;height: 190px;" *ngIf="product.image" [src]="createImg(product.image)">
                                                         <div class="men-cart-pro">
                                                             <div class="inner-men-cart-pro">
                                                                 <a [routerLink]="['/product-detail-client',product.id]"

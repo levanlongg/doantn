@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { ClientNewsService } from '../Client-service/client-news.service';
 
 @Component({
@@ -30,6 +31,10 @@ export class KnowledgeCeramicsComponent implements OnInit {
     this.loadKnCeramics();
   }
 
+  createImg(path) {
+    return environment.urlImg + 'image/' + path;
+  }
+  
   loadKnCeramics() {
     this.listblog.getKnCeramicList().subscribe((res: any) => {
       this.blog = res;

@@ -16,10 +16,6 @@ import { ContactComponent } from './contact/contact.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { KnowledgeCeramicsComponent } from './knowledge-ceramics/knowledge-ceramics.component';
 import { ListProductComponent } from './list-product/list-product.component';
-import { PaymentComponent } from './payment/payment.component';
-import { PaymentAtmComponent } from './payment-atm/payment-atm.component';
-import { PaymentCreditComponent } from './payment-credit/payment-credit.component';
-import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ServicesComponent } from './services/services.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -41,7 +37,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 // ];
 @NgModule({
   declarations: [HomeComponent, ContentComponent, FooterComponent, HeaderComponent, LeftHomeComponent, NewsletterComponent, OtherProductComponent, RightHomeComponent, SlideHomeComponent, BlogComponent,
-  CheckoutComponent, ContactComponent, IntroductionComponent, KnowledgeCeramicsComponent, PaymentComponent, PaymentAtmComponent, PaymentCreditComponent, PaymentPaypalComponent, ServicesComponent,
+  CheckoutComponent, ContactComponent, IntroductionComponent, KnowledgeCeramicsComponent,ServicesComponent,
   ListProductComponent, ProductDetailComponent, PolicyComponent, BlogDetailComponent, 
    ],
   imports: [
@@ -91,22 +87,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
       {
         path: 'knowleage-ceramics-client',
         component: KnowledgeCeramicsComponent,
-      },
-      {
-        path: 'payment-client',
-        component: PaymentComponent,
-      },
-      {
-        path: 'payment-atm-client',
-        component: PaymentAtmComponent,
-      },
-      {
-        path: 'payment-credit-client',
-        component: PaymentCreditComponent,
-      },
-      {
-        path: 'payment-paypal-client',
-        component: PaymentPaypalComponent,
       },
       {
         path: 'services-client',
