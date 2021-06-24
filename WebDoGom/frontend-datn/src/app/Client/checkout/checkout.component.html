@@ -50,8 +50,7 @@
 								<tr class="rem1" *ngFor="let product of products">
 									<td class="invert-image">
 										<a href="single2.html">
-											<img src="../assets/Client/hinh_anh_sp/{{product.image}}" alt=" "
-												class="img-responsive" style="height: 70px; width: 70px;">
+											<img style="height: 70px; width: 70px;" *ngIf="product.image" [src]="createImg(product.image)">
 										</a>
 									</td>
 									<td class="invert">

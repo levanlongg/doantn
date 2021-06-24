@@ -15,10 +15,38 @@ export class OrderService {
 
   public urlAPI = environment.apiUrl + '/order';
   public urlAPIs = environment.apiUrl + '/search-order-admin';
+  public urlAPI1 = environment.apiUrl + '/donmoi';
+  public urlAPI2 = environment.apiUrl + '/dondonggoi';
+  public urlAPI3 = environment.apiUrl + '/donvanchuyen';
+  public urlAPI4 = environment.apiUrl + '/dondagiao';
   constructor(private _http: HttpClient) { }
 
   getOrder(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  getdonhangmoi(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI1).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  getdondonggoi(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI2).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  getdonvanchuyen(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI3).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  getdondagiao(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI4).pipe(map(res => {
       return res;
     }));
   }

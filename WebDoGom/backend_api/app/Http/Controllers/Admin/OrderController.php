@@ -57,4 +57,32 @@ class OrderController extends Controller
                             ->orwhere("payment_status","like","%".$name."%")
                             ->get();
     }
+    public function donhangmoi()
+    {
+        $donhangmoi = DB::table('order')->where([
+            ['payment_status', '=', '0'],
+        ])->get();
+        return response()->json($donhangmoi, 200);
+    }
+    public function donhangdonggoi()
+    {
+        $donhangmoi = DB::table('order')->where([
+            ['payment_status', '=', '1'],
+        ])->get();
+        return response()->json($donhangmoi, 200);
+    }
+    public function donhangvc()
+    {
+        $donhangmoi = DB::table('order')->where([
+            ['payment_status', '=', '2'],
+        ])->get();
+        return response()->json($donhangmoi, 200);
+    }
+    public function donhangtt()
+    {
+        $donhangmoi = DB::table('order')->where([
+            ['payment_status', '=', '3'],
+        ])->get();
+        return response()->json($donhangmoi, 200);
+    }
 }

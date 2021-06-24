@@ -83,7 +83,7 @@ class HomeController extends Controller
     {
         return response()->json(OderModel::get(), 200);
     }
-    public function CreateOrder(OderDetailModel $detail, Request $request)
+    public function CreateOrder(OderDetailModel $item, Request $request)
     {
         try {
             $order = new OderModel();
@@ -118,7 +118,7 @@ class HomeController extends Controller
             }
            if ($orderItem->save()) {
                 return response()->json([
-                    "data" => $order,
+                    "data" => $items,
                     "msg" => "Create order successfully"
                 ], 201);
             } else {

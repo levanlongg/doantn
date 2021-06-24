@@ -134,5 +134,11 @@ export class HomeComponent implements OnInit {
       });
     }
   }
+
+  lspgomgiadung() {
+    this.productService.lspgomgiadung().subscribe((res: any) => {
+      this.product = res;
+    });
+  }
 }
 

@@ -210,13 +210,6 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr *ngFor="let data1 of totalproduct">
-												<td style="text-align: center;">6</td>
-												<td style="text-align: center;">Tổng sản phẩm</td>
-												<td style="text-align: center;">
-													{{data1.value2}} sản phẩm
-												</td>
-											</tr>
 											<tr *ngFor="let data of items">
 												<td style="text-align: center;">1</td>
 												<td style="text-align: center;">Tổng doanh thu</td>
@@ -250,6 +243,13 @@
 												<td style="text-align: center;">Đơn hàng đang giao</td>
 												<td style="text-align: center;">
 													{{data4.value5}} đơn hàng
+												</td>
+											</tr>
+											<tr *ngFor="let data1 of totalproduct">
+												<td style="text-align: center;">6</td>
+												<td style="text-align: center;">Tổng sản phẩm</td>
+												<td style="text-align: center;">
+													{{data1.value2}} sản phẩm
 												</td>
 											</tr>
 										</tbody>

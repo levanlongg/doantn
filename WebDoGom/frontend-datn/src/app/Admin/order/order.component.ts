@@ -51,6 +51,34 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  loadDatadhm() {
+    this.OrderService.getdonhangmoi().subscribe((res: any) => {
+      this.items = res;
+      console.log(this.items);
+    });
+  }
+
+  loadDatadhdg() {
+    this.OrderService.getdondonggoi().subscribe((res: any) => {
+      this.items = res;
+      console.log(this.items);
+    });
+  }
+
+  loadDatadhdvc() {
+    this.OrderService.getdonvanchuyen().subscribe((res: any) => {
+      this.items = res;
+      console.log(this.items);
+    });
+  }
+
+  loadDatadhtt() {
+    this.OrderService.getdondagiao().subscribe((res: any) => {
+      this.items = res;
+      console.log(this.items);
+    });
+  }
+
   showEdit(id: any) {
     this.checkedid = 1;
     this.OrderService.GetSingleOrder(id).subscribe((res) => {

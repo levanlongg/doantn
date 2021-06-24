@@ -17,34 +17,29 @@ class CartController extends Controller
     {
         // return response()->json(["data" => $request->carts, "success" => true], 200);
         $tblcart = new OderModel([
-            'name' => $request->name,
-            'idcustomer' => $request->idcustomer,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'totalmoney' => $request->totalMoney,
-            'status' => $request->status,
-            'reason' => $request->reason,
-            'paytype' => $request->paytype,
-            'payTypeOfType' => $request->payTypeOfType,
+            'order_name' => $request->order_name,
+            'order_address' => $request->order_address,
+            'order_email' => $request->order_email,
+            'order_phone' => $request->order_phone,
+            'order_note' => $request->order_note,
+            'totalMoney' => $request->totalMoney,
+            'payment_status' => $request->payment_status,
         ]);
         try {
             $tblcart->save();
             // return response()->json(["data" => $tblcart, "success" => true], 200);
 
+            $items = json_decode($request->getContent(), true);
             foreach ($request->carts as $key => $value) {
                 $value = (object) $value;
-                // dd($value);
-                $tblinfocart = new OderModel([
-                    'idproduct' => $value->id,
-                    'idcart' => $tblcart->id,
-                    'mass' => $value->quantity,
-                    'price' => $value->priceSale,
-                    'totalMoney' => $value->totalMoneySale,
-                    'typeCategory' => $value->typequantity
+                $tblinfocart = new OderDetailModel([
+                    'product_id' => $value->id,
+                    'order_id' => $tblcart->id,
+                    'quantity' => $value->quantity,
                 ]);
                 // dd($tblinfocart);
-                $product = OderModel::where('idproduct', $value->id);
-                $product->update(['mass' => ($product->first()->mass) - ($value->quantity)]);
+                $product = OderModel::where('id', $value->id);
+                $product->update(['quantity' => ($product->first()->quantity) - ($value->quantity)]);
                 $tblinfocart->save();
             }
 
@@ -59,13 +54,10 @@ class CartController extends Controller
             'id' => $tblcart,
             'message' => 'Successfully!'
         ], 200);
-        $tblinfocart = new OderModel([
-            'idproduct' => $request->idproduct,
-            'idcart' => $request->idcart,
-            'mass' => $request->mass,
-            'price' => $request->price,
-            'totalMoney' => $request->totalMoney,
-            'typeCategory' => $request->typeCategory
+        $tblinfocart = new OderDetailModel([
+            'product_id' => $value->id,
+            'order_id' => $tblcart->id,
+            'quantity' => $value->quantity,
         ]);
 
         $tblcart->save();

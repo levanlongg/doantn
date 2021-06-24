@@ -122,10 +122,15 @@ Route::delete('users/{users}','Admin\UserController@usersDelete');
 Route::get('searchuser/{name}',[UserController::class,'search']);
 //order
 Route::get('order','Admin\OrderController@order');
+Route::get('donmoi','Admin\OrderController@donhangmoi');
+Route::get('dondonggoi','Admin\OrderController@donhangdonggoi');
+Route::get('donvanchuyen','Admin\OrderController@donhangvc');
+Route::get('dondagiao','Admin\OrderController@donhangtt');
 Route::get('order/{id}','Admin\OrderController@orderById');
 Route::put('order/{id}','Admin\OrderController@orderUpdate');
 Route::delete('order/{order}','Admin\OrderController@orderDelete');
 Route::get('search-order-admin/{name}',[OrderController::class,'search']);
+
 // CLIENT
 //home
 Route::get('tranh-gom-client','Client\HomeController@Home_tranh_gom');
@@ -141,6 +146,7 @@ Route::get('chi-tiet-san-pham/{id}','Client\HomeController@Product_detail');
 //order
 Route::get('orders','Client\HomeController@orderlist');
 Route::post('orders','Client\HomeController@CreateOrder');
+// Route::post('orders','Client\CartController@saveCarts');
 
 //introduction on client
 Route::get('client-introduction','Admin\IntroductionController@introduction');

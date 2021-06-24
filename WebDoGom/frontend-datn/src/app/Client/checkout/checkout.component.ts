@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { CartService } from '../Client-service/cart.service'
 import { CheckoutService } from '../Client-service/checkout.service';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { environment } from 'src/environments/environment';
 declare var paypal;
 @Component({
   selector: 'app-checkout',
@@ -96,6 +97,10 @@ export class CheckoutComponent implements OnInit {
     this.updateSuccess();
   }
 
+  createImg(path) {
+    return environment.urlImg + 'product/' + path;
+  }  
+  
   clearCart(): void {
     var result = confirm("Bạn muốn xóa bản ghi này?");
     if (result == true) {
@@ -120,7 +125,7 @@ export class CheckoutComponent implements OnInit {
       order_note: this.order_note,
       payment_status: this.payment_status,
       totalMoney: this.totalMoney,
-      orderDetails: this.products,
+      // orderDetails: this.products,
       // orderDetails: JSON.stringify(this.products),
     };
     this.checkedid = 0;
@@ -136,9 +141,9 @@ export class CheckoutComponent implements OnInit {
           else {
             this.createEror1();
           }
-          setTimeout(() => {
-            this.router.navigateByUrl('/home');
-          }, 1000);
+          // setTimeout(() => {
+          //   this.router.navigateByUrl('/home');
+          // }, 1000);
         }
       });
     }

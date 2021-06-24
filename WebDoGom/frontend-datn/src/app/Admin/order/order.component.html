@@ -202,12 +202,12 @@
                     <div class="table-heading">
                         <h2 style="color: black;">Quản lý đơn hàng</h2>
                     </div>
-                    <p style="color: red;">*Ghi chú:</p>
-                    <p style="color: black;">Tình trạng 0 =>Chưa giao hàng, Tình trạng 1 =>Đã đóng gói,<br/> Tình trạng 2 => Đang vận chuyển, Tình trạng 3 => Đã giao hàng và thanh toán</p>
+                    <button class="btn btn-success" style="cursor:pointer; margin-left: 0%;" (click)="loadDatadhm()">Đơn hàng mới</button>
+                    <button class="btn btn-success" style="cursor:pointer; margin-left: 1%;" (click)="loadDatadhdg()">Đơn hàng đóng gói</button>
+                    <button class="btn btn-success" style="cursor:pointer; margin-left: 1%;" (click)="loadDatadhdvc()">Đơn hàng vận chuyển</button>
+                    <button class="btn btn-success" style="cursor:pointer; margin-left: 1%;" (click)="loadDatadhtt()">Đơn hàng đã giao và thanh toán</button>
                     <div class="agile-tables">
                         <div class="w3l-table-info">
-                            <!-- <button type="button" class="btn btn-success" (click)="showCreate()"><i
-                                    class="glyphicon glyphicon-plus"></i></button> -->
                             <table id="table">
                                 <thead>
                                     <tr>
