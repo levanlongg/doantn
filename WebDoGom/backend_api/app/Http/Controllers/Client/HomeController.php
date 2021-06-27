@@ -11,9 +11,12 @@ use App\Model\OderModel;
 use App\Model\OderDetailModel;
 use App\Model\CustomerModel;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+
     public function Home_tranh_gom()
     {
         $tranhgom = DB::table('product')->where([
@@ -95,6 +98,18 @@ class HomeController extends Controller
             $order->order_note = $request->order_note;
             $order->totalMoney = $request->totalMoney;
             $order->payment_status = $request->payment_status;
+
+            $title = '[Thông báo] Xác nhận đơn hàng';
+            $customer_details = ['name' =>  $order->order_name];
+            $email =  $order->order_email;
+            $order_details = ['price' => $order->totalMoney];
+            $sendmail = Mail::to($email)->send(new TestMail($title, $customer_details, $order_details,$email));
+            if (empty($sendmail)) {
+                return response()->json(['message' => 'Bạn vui lòng check email để các nhận'], 200);
+            } else {
+                return response()->json(['message' => 'Chưa gửi mail'], 400);
+            }
+            
             $order->save();
             if ($order->save()) {
                 return response()->json([
@@ -116,7 +131,7 @@ class HomeController extends Controller
                 $orderItem->quantity = $item['quantity'];
                 $orderItem->save();
             }
-           if ($orderItem->save()) {
+            if ($orderItem->save()) {
                 return response()->json([
                     "data" => $items,
                     "msg" => "Create order successfully"
@@ -127,82 +142,94 @@ class HomeController extends Controller
                     "msg" => "Create order fails"
                 ], 400);
             }
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
         }
     }
 
+    // public function sendEmail()
+    // {
+    //     $title = '[Confirmation] Thank you for your order';
+    //     $customer_details = ['name' => 'Arogya', 'address' => 'kathmandu Nepal', 'phone' => '123123123', 'email' => 'levanlong99pchy@gmail.com'];
+    //     $order_details = ['SKU' => 'D-123456', 'price' => '10000', 'order_date' => '2020-01-22',];
+    //     $sendmail = Mail::to($customer_details['email'])->send(new TestMail($title, $customer_details, $order_details));
+    //     if (empty($sendmail)) {
+    //         return response()->json(['message' => 'Bạn vui lòng check email để các nhận'], 200);
+    //     } else {
+    //         return response()->json(['message' => 'Chưa gửi mail'], 400);
+    //     }
+    // } 
+    
     //lọc
     public function under500()
     {
         $under500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [0, 499000])
-        ->get();
-        return response()->json($under500,200);
+            ->whereBetween('sales_prices', [0, 499000])
+            ->get();
+        return response()->json($under500, 200);
     }
 
     public function from500to1000()
     {
         $from500to1000 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [500000, 1000000])
-        ->get();
-        return response()->json($from500to1000,200);
+            ->whereBetween('sales_prices', [500000, 1000000])
+            ->get();
+        return response()->json($from500to1000, 200);
     }
 
     public function from1000to1500()
     {
         $from1000to1500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [1000000, 1500000])
-        ->get();
-        return response()->json($from1000to1500,200);
+            ->whereBetween('sales_prices', [1000000, 1500000])
+            ->get();
+        return response()->json($from1000to1500, 200);
     }
 
     public function from1500to2000()
     {
         $from1500to2000 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [1500000, 2000000])
-        ->get();
-        return response()->json($from1500to2000,200);
+            ->whereBetween('sales_prices', [1500000, 2000000])
+            ->get();
+        return response()->json($from1500to2000, 200);
     }
 
     public function from2000to2500()
     {
         $from2000to2500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [2000000, 2500000])
-        ->get();
-        return response()->json($from2000to2500,200);
+            ->whereBetween('sales_prices', [2000000, 2500000])
+            ->get();
+        return response()->json($from2000to2500, 200);
     }
 
     public function from2500to3500()
     {
         $from2500to3500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [2500000, 3500000])
-        ->get();
-        return response()->json($from2500to3500,200);
+            ->whereBetween('sales_prices', [2500000, 3500000])
+            ->get();
+        return response()->json($from2500to3500, 200);
     }
 
     public function from3500to4500()
     {
         $from3500to4500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [3500000, 4500000])
-        ->get();
-        return response()->json($from3500to4500,200);
+            ->whereBetween('sales_prices', [3500000, 4500000])
+            ->get();
+        return response()->json($from3500to4500, 200);
     }
 
     public function from4500to5500()
     {
         $from4500to5500 = ProductModel::select("*")
-        ->whereBetween('sales_prices', [4500000, 5500000])
-        ->get();
-        return response()->json($from4500to5500,200);
+            ->whereBetween('sales_prices', [4500000, 5500000])
+            ->get();
+        return response()->json($from4500to5500, 200);
     }
 
     public function over5500()
     {
         $over5500 = ProductModel::select("*")
-        ->where('sales_prices', '>', 5500000 )
-        ->get();
-        return response()->json($over5500,200);
+            ->where('sales_prices', '>', 5500000)
+            ->get();
+        return response()->json($over5500, 200);
     }
 
     //loc loai sp
@@ -212,7 +239,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '23'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Gomtrangtri()
@@ -220,7 +247,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '21'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Gomphongthuy()
@@ -228,7 +255,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '22'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Quatang()
@@ -236,7 +263,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '24'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Tranhgom()
@@ -244,7 +271,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '20'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Tuonggom()
@@ -252,7 +279,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '25'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Dotho()
@@ -260,7 +287,7 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '26'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 
     public function Doluuniem()
@@ -268,6 +295,6 @@ class HomeController extends Controller
         $gomgiadung = DB::table('product')->where([
             ['product_type_id', '=', '27'],
         ])->get();
-        return response()->json($gomgiadung,200);
+        return response()->json($gomgiadung, 200);
     }
 }

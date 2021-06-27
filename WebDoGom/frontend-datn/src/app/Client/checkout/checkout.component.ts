@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
@@ -6,6 +6,8 @@ import { CartService } from '../Client-service/cart.service'
 import { CheckoutService } from '../Client-service/checkout.service';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 declare var paypal;
 @Component({
   selector: 'app-checkout',
@@ -20,7 +22,7 @@ export class CheckoutComponent implements OnInit {
   totalMoney: number;
   public checkedid: any;
   public entity: any;
-  customer_id: string= '';
+  customer_id: string = '';
   order_name: string = '';
   order_address: string = '';
   order_email: string = '';
@@ -32,7 +34,8 @@ export class CheckoutComponent implements OnInit {
     private checkoutService: CheckoutService,
     private router: Router,
     private toastr: ToastrService,
-  ) {}
+    private http: HttpClient
+  ) { }
 
   createSuccess() {
     this.toastr.success('Đã thêm sản phẩm vào giỏ hàng', 'Thông báo!', { timeOut: 2000 });
@@ -79,7 +82,7 @@ export class CheckoutComponent implements OnInit {
 
     // this.initConfig();
   }
-  
+
   product = {
     price: 777.77,
     description: 'used couch, decent condition',
@@ -99,8 +102,8 @@ export class CheckoutComponent implements OnInit {
 
   createImg(path) {
     return environment.urlImg + 'product/' + path;
-  }  
-  
+  }
+
   clearCart(): void {
     var result = confirm("Bạn muốn xóa bản ghi này?");
     if (result == true) {
@@ -110,13 +113,13 @@ export class CheckoutComponent implements OnInit {
         this.router.navigateByUrl('/home');
       }, 1000);
     }
-    else{
+    else {
       this.clearError();
     }
   }
 
-  checkout(){
-      var order = {
+  checkout() {
+    var order = {
       customer_id: this.customer_id,
       order_name: this.order_name,
       order_address: this.order_address,
@@ -137,6 +140,18 @@ export class CheckoutComponent implements OnInit {
           if (result == true) {
             this.cartService.clearCart();
             this.createSuccess1();
+            Swal.fire({
+                  title: 'Thông báo!',
+                  text: res['message'],
+                  icon: 'success'
+                });
+            // this.checkoutService.sendemail().subscribe(data => {
+            //   Swal.fire({
+            //     title: 'Thông báo!',
+            //     text: data['message'],
+            //     icon: 'success'
+            //   });
+            // })
           }
           else {
             this.createEror1();
@@ -147,18 +162,6 @@ export class CheckoutComponent implements OnInit {
         }
       });
     }
-    // this.checkoutService
-    //   .checkout(order)
-    //   .pipe(first())
-    //   .subscribe((res) => {
-    //     if (res > 0) {
-    //       this.cartService.clearCart();
-    //     }
-    //     setTimeout(() => {
-    //       this.router.navigateByUrl('/home');
-    //     }, 1000);
-    //     this.createSuccess1();
-    //   });
   }
 }
 

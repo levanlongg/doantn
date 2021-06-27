@@ -104,7 +104,7 @@ export class ProductComponent implements OnInit {
     this.toastr.success('Thêm thành công', 'Thông báo!');
   }
   createEror() {
-    this.toastr.error('Chưa thêm quyền người dùng', 'Thông báo!');
+    this.toastr.error('Chưa thêm sản phẩm', 'Thông báo!');
   }
   updateSuccess() {
     this.toastr.success('Cập nhật thành công', 'Thông báo!');
@@ -116,7 +116,7 @@ export class ProductComponent implements OnInit {
     this.toastr.success('Xóa thành công', 'Thông báo!');
   }
   deleteEror() {
-    this.toastr.error('Chưa xóa quyền người dùng', 'Thông báo!');
+    this.toastr.error('Chưa xóa sản phẩm', 'Thông báo!');
   }
 
   loadData() {

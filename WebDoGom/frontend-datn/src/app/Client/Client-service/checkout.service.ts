@@ -17,6 +17,8 @@ export class CheckoutService {
 
   public API_URL = environment.apiUrl + '/orders';
   public API_URL1 = environment.apiUrl + '/contact';
+  public API_URL2 = environment.apiUrl + '/sendmail';
+
   constructor(private readonly _http: HttpClient) {}
   checkout(order: any): Observable<any> {
     // const url = `${this.API_URL}/orders`;
@@ -33,6 +35,12 @@ export class CheckoutService {
   contact(data: any): Observable<any> {
     //debugger;
     return this._http.post<any>(this.API_URL1, data, HttpOptionss).pipe(map(res => {
+      return res;
+    }));
+  }
+
+  sendemail(): Observable<any[]> {
+    return this._http.get<any[]>(this.API_URL2).pipe(map(res => {
       return res;
     }));
   }

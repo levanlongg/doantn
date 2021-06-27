@@ -15,7 +15,15 @@ export class ProductTypeService {
 
   public urlAPI = environment.apiUrl + '/producttype';
   public urlAPIs = environment.apiUrl + '/searchproducttype';
+  public urlAPI1 = environment.apiUrl + '/sendemail';
   constructor(private _http: HttpClient) { }
+
+
+  sendemail(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI1).pipe(map(res => {
+      return res;
+    }));
+  }
 
   getListproductype(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI).pipe(map(res => {

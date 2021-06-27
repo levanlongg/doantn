@@ -189,7 +189,10 @@ Route::get('lspdoluuniem','Client\HomeController@Doluuniem');
 
 Route::get('sanphamkhac','Client\HomeController@Sanphamkhac');
 
-
+Route::get('sendmail','Client\HomeController@sendEmail');
+// Route::group(['prefix' => 'v1'], function () {
+//      Route::get('sendmail','HomeController@sendEmail'); 
+// });
 
 // Route::post('news', [NewsController::class, 'newsSave'])->name('news');
 // Route::group(['middleware'=>'auth:api'],function(){
