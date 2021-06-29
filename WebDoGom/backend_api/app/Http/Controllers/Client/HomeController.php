@@ -98,7 +98,8 @@ class HomeController extends Controller
             $order->order_note = $request->order_note;
             $order->totalMoney = $request->totalMoney;
             $order->payment_status = $request->payment_status;
-
+            $order->save();
+            
             $title = '[Thông báo] Xác nhận đơn hàng';
             $customer_details = ['name' =>  $order->order_name];
             $email =  $order->order_email;
@@ -110,7 +111,7 @@ class HomeController extends Controller
                 return response()->json(['message' => 'Chưa gửi mail'], 400);
             }
             
-            $order->save();
+            
             if ($order->save()) {
                 return response()->json([
                     "data" => $order,

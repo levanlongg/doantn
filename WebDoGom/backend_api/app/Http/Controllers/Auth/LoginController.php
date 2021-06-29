@@ -41,6 +41,38 @@ class LoginController extends Controller
             ],200);
         }
     }
+
+    public function signin(Request $request)
+    {
+        
+        $datacheckLogin=[
+            'email'=> $request->email,
+            'password'=>$request->password,
+        ];
+        //dd(Auth::attempt($datacheckLogin));
+        //Xac thuc user co tai khoan
+        if(Auth::attempt($datacheckLogin)){
+            $checkTokenExit=SessionUser::where('user_id',auth()->id())->first();
+            if(empty($checkTokenExit))
+            {
+                $userSession=SessionUser::create([
+                    'token'=>Str::random(40),
+                    'refresh_token'=>Str::random(40),
+                    'token_expried'=>date('Y-m-d H:i:s', strtotime('+30 day')),
+                    'refresh_token_expried'=>date('Y-m-d H:i:s', strtotime('+365 day')),
+                    'user_id'=>auth()->id()
+                ]);
+            }
+            else{
+                $userSession=$checkTokenExit;
+            }
+            return response()->json([
+                'code'=>200,
+                'data'=>$userSession,
+            ],200);
+        }
+    }
+
     public function refreshToken(Request $request)
     {
         $token=$request->header('token');

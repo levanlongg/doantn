@@ -34,6 +34,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register','Auth\RegisterController@register');
 //login
 Route::post('login','Auth\LoginController@login');
+Route::post('signin','Auth\LoginController@signin');
 //refres_token
 Route::post('refresh_token','Auth\LoginController@refreshToken');
 //delete_token
@@ -190,6 +191,9 @@ Route::get('lspdoluuniem','Client\HomeController@Doluuniem');
 Route::get('sanphamkhac','Client\HomeController@Sanphamkhac');
 
 Route::get('sendmail','Client\HomeController@sendEmail');
+Route::get('sendmail','Client\HomeController@sendEmail');
+
+
 // Route::group(['prefix' => 'v1'], function () {
 //      Route::get('sendmail','HomeController@sendEmail'); 
 // });

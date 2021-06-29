@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
+const baseUrl = environment.apiUrl + "signin";
 
 const HttpOptionss = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -13,6 +14,11 @@ const HttpOptionss = {
 })
 export class HomeService {
 
+  private authSubject = new BehaviorSubject(JSON.parse(localStorage.getItem("jwt")));
+  private current = this.authSubject.asObservable();
+  currentUser = null;
+
+
   public urlAPI1 = environment.apiUrl + '/tranh-gom-client';
   public urlAPI2 = environment.apiUrl + '/gom-trang-tri-client';
   public urlAPI3 = environment.apiUrl + '/gom-phong-thuy-client';
@@ -20,6 +26,14 @@ export class HomeService {
   public urlAPI5 = environment.apiUrl + '/client-introduction';
   //public urlAPIs = environment.apiUrl + '/searchca';
   constructor(private _http: HttpClient) { }
+
+  input(data) {
+    this.authSubject.next(data);
+  }
+
+  output() {
+    return this.current;
+  }
 
   get_picture_ceramic(): Observable<any[]> {
     return this._http.get<any[]>(this.urlAPI1).pipe(map(res => {
@@ -81,4 +95,6 @@ export class HomeService {
   //     return res;
   //   }));
   // }
+
+  
 }

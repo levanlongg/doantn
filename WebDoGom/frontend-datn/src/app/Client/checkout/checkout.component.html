@@ -33,120 +33,158 @@
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-				<div class="checkout-right">
-					<div class="table-responsive">
-						<table class="timetable_sub">
-							<thead>
-								<tr>
-									<th>Hình ảnh</th>
-									<th>Số lượng</th>
-									<th>Tên sản phẩm</th>
-									<th>Giá bán</th>
-									<th>Thành tiền</th>
-									<th>Tác vụ</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="rem1" *ngFor="let product of products">
-									<td class="invert-image">
-										<a href="single2.html">
-											<img style="height: 70px; width: 70px;" *ngIf="product.image" [src]="createImg(product.image)">
-										</a>
-									</td>
-									<td class="invert">
-										<input #quantity type="number" name="qtybutton" value="{{product.quantity}}"
-											min="1">
-									</td>
-									<td class="invert">{{product.name}}</td>
-									<td class="invert">{{product.price | currency : "VND" : true}}</td>
-									<td class="invert">{{product.quantity * product.price | currency : "VND"}}</td>
-									<td class="invert">
-										<button style="margin-left: 2%;"
-											(click)="updateProduct(product.id, quantity.value)"
-											class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-										<button style="margin-left: 2%;" (click)="deleteProduct(product.id)"
-											class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
-									</td>
-								</tr>
-								<tr class="rem1">
-									<td class="invert" colspan="6">
-										<p style="float: right; color: red;">Tổng tiền: {{totalMoney | currency : 'VND'
-											: true}}</p>
-									</td>
-								</tr>
-								
-							</tbody>
-						</table>
-					</div>
+			<div class="checkout-right">
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								<th>Hình ảnh</th>
+								<th>Số lượng</th>
+								<th>Tên sản phẩm</th>
+								<th>Giá bán</th>
+								<th>Thành tiền</th>
+								<th>Tác vụ</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="rem1" *ngFor="let product of products">
+								<td class="invert-image">
+									<a href="single2.html">
+										<img style="height: 70px; width: 70px;" *ngIf="product.image"
+											[src]="createImg(product.image)">
+									</a>
+								</td>
+								<td class="invert">
+									<input #quantity type="number" name="qtybutton" value="{{product.quantity}}"
+										min="1">
+								</td>
+								<td class="invert">{{product.name}}</td>
+								<td class="invert">{{product.price | currency : "VND" : true}}</td>
+								<td class="invert">{{product.quantity * product.price | currency : "VND"}}</td>
+								<td class="invert">
+									<button style="margin-left: 2%;" (click)="updateProduct(product.id, quantity.value)"
+										class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
+									<button style="margin-left: 2%;" (click)="deleteProduct(product.id)"
+										class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+								</td>
+							</tr>
+							<tr class="rem1">
+								<td class="invert" colspan="6">
+									<p style="float: right; color: red;">Tổng tiền: {{totalMoney | currency : 'VND'
+										: true}}</p>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
 				</div>
-				<div class="checkout-left">
-					<div class="address_form_agile">
-						<div class="row">
-							<div class="col-md-6">
-								<h4>Thông tin đặt hàng</h4>
-								<div class="creditly-card-form agileinfo_form">
-									<div class="creditly-wrapper wthree, w3_agileits_wrapper">
-										<!-- <form #PostForm="ngForm" (ngSubmit)="checkout(PostForm.order)"> -->
-										<div class="information-wrapper">
-											<div class="first-row" style="color: black;">
-												<div class="controls">
-													<input class="billing-address-name" type="text" name="order_name"
-														placeholder="Tên người nhận hàng" required="" [(ngModel)]="order_name">
+			</div>
+			<div class="checkout-left">
+				<div class="address_form_agile">
+					<div class="row">
+						<div class="col-md-6">
+							<h4>Thông tin đặt hàng</h4>
+							<div class="creditly-card-form agileinfo_form">
+								<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+									<!-- <form #PostForm="ngForm" (ngSubmit)="checkout(PostForm.order)"> -->
+									<div class="information-wrapper">
+										<div class="first-row" style="color: black;">
+											<div class="controls1">
+												<input class="billing-address-name" type="text" name="order_name"
+													placeholder="Tên người nhận hàng" [(ngModel)]="order_name" required
+													#name="ngModel">
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="name.invalid && (name.dirty || name.touched)"
+														class="label label-danger">
+														Tên người nhận hàng không được để trống
+													</div>
 												</div>
-												<div class="controls">
-													<input class="billing-address-name" type="text" name="order_address"
-														placeholder="Địa chỉ giao hàng" required="" [(ngModel)]="order_address">
+											</div><br />
+											<div class="controls">
+												<input class="billing-address-name" type="text" name="order_address"
+													placeholder="Địa chỉ giao hàng" [(ngModel)]="order_address" required
+													#address="ngModel">
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="address.invalid && (address.dirty || address.touched)"
+														class="label label-danger">
+														Địa chỉ giao hàng không được để trống
+													</div>
 												</div>
-												<div class="controls">
-													<input type="text" placeholder="Số điện thoại người nhận" name="order_phone"
-														required="" [(ngModel)]="order_phone">
+											</div><br />
+											<div class="controls">
+												<input type="text" placeholder="Số điện thoại người nhận"
+													name="order_phone" required="" [(ngModel)]="order_phone" required
+													#phone="ngModel">
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+														class="label label-danger">
+														Số điện thoại người nhận không được để trống
+													</div>
 												</div>
-												<div class="controls">
-													<input type="text" placeholder="Email" name="order_email"
-														required="" [(ngModel)]="order_email">
+											</div><br />
+											<div class="controls">
+												<input type="text" placeholder="Email người nhận" name="order_email"
+													[(ngModel)]="order_email" required #email="ngModel">
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="email.invalid && (email.dirty || email.touched)"
+														class="label label-danger">
+														Email người nhận không được để trống
+													</div>
 												</div>
-							
-												<div class="controls">
-													<input type="text" placeholder="Ghi chú" name="order_note"
-														required="" [(ngModel)]="order_note">
+											</div><br />
+											<div class="controls">
+												<input type="text" placeholder="Ghi chú" name="order_note"
+													[(ngModel)]="order_note" required #note="ngModel">
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="note.invalid && (note.dirty || note.touched)"
+														class="label label-danger">
+														Chú ý không được để trống
+													</div>
 												</div>
-												<div class="controls">
-														<select name="payment_status" [(ngModel)]="payment_status" required="">
-															<option value="0">Đơn hàng mới</option>
-														</select>
+											</div><br/>
+											<div class="controls">
+												<select name="payment_status" [(ngModel)]="payment_status" required #status="ngModel">
+													<option value="0">Đơn hàng mới</option>
+												</select>
+												<div style="margin-top: -3.5%;">
+													<div *ngIf="status.invalid && (status.dirty || status.touched)"
+														class="label label-danger">
+														Tình trạng đơn hàng không được để trống
+													</div>
 												</div>
-												<div class="controls">
-													<input type="hidden" name="totalMoney"
-														required="" [(ngModel)]="totalMoney">
-												</div>
-												<!-- <div class="controls">
+											</div><br/>
+											<div class="controls">
+												<input type="hidden" name="totalMoney" required=""
+													[(ngModel)]="totalMoney">
+											</div>
+											<!-- <div class="controls">
 													<input type="text" name="orderDetails"
 														required="" [(ngModel)]="products">
 												</div> -->
-										
-											</div>
-											<button class="submit check_out" (click)="checkout()">Đặt hàng</button>
-											<!-- <button type="button" (click)="SendMail()">Click on Me to Send Mail :)</button> -->
+
 										</div>
-										<!-- </form> -->
+										<button class="submit check_out" (click)="checkout()">Đặt hàng</button>
 									</div>
+									<!-- </form> -->
 								</div>
 							</div>
-							<div class="col-md-1"></div>
-							<div class="col-md-5">
-								<h4>Thông tin đơn hàng</h4>
-								<ul>
-									<li *ngFor="let product of products"> {{product.name}}  X  {{product.quantity}} =
-									  <span>{{ product.quantity * product.price | currency : "VND" : true }} </span></li>
-								</ul>
-								<br/>
-								<div id="paypal-button"></div>
-							</div>
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-md-5">
+							<h4>Thông tin đơn hàng</h4>
+							<ul>
+								<li *ngFor="let product of products"> {{product.name}} X {{product.quantity}} =
+									<span>{{ product.quantity * product.price | currency : "VND" : true }} </span>
+								</li>
+							</ul>
+							<br />
+							<div id="paypal-button"></div>
 						</div>
 					</div>
-					<div class="clearfix"> </div>
 				</div>
-				
+				<div class="clearfix"> </div>
+			</div>
+
 		</div>
 	</div>
 	<app-newsletter></app-newsletter>
